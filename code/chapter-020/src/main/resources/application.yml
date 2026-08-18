@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: payment-service-ch020
+  datasource:
+    url: jdbc:postgresql://localhost:5432/payment_db
+    username: finflow
+    password: finflow
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      leak-detection-threshold: 60000
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+          fetch_size: 500
+  threads:
+    virtual:
+      enabled: true
+
+server:
+  tomcat:
+    threads:
+      max: 200
+      min-spare: 10
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: readinessState,warmup
