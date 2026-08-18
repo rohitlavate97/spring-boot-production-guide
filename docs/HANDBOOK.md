@@ -15,7 +15,7 @@
 
 | Chapter | Topic | Status |
 |---------|-------|--------|
-| [010](chapters/010-core-java-for-spring.md) | Core Java for Spring — Reflection, Annotations, Generics, Functional Interfaces, Records | ⬜ Not Started |
+| [010](chapters/010-core-java-for-spring.md) | Core Java for Spring — Reflection, Annotations, Generics, Functional Interfaces, Records | ✅ Complete |
 | [020](chapters/020-jvm-internals.md) | JVM Internals — Memory Model, GC, Class Loading, JIT, Thread Scheduling | ⬜ Not Started |
 
 ### Part II — Spring Core
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 0 / 40 chapters completed
+## Progress: 1 / 40 chapters completed
 
 ---
 
