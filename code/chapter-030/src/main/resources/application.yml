@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: payment-service-ch030
+  main:
+    allow-circular-references: false
+    log-startup-info: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,startup,beans
+  endpoint:
+    startup:
+      enabled: true
+
+logging:
+  level:
+    com.finflow.chapter030: DEBUG
+    org.springframework.beans.factory: DEBUG
