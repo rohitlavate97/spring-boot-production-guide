@@ -27,7 +27,7 @@ Full architectural topology, database schemas, failure domains, and infrastructu
 
 ## 📊 Curriculum & Progress Tracker
 
-**Progress:** `8 / 40` Chapters Completed
+**Progress:** `9 / 40` Chapters Completed
 
 Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](docs/HANDBOOK.md).
 
@@ -41,7 +41,7 @@ Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](d
 | | [060](docs/chapters/060-spring-boot-auto-configuration.md) | Auto-Configuration — Conditional Annotations, AutoConfiguration.imports, Starters | ✅ Complete |
 | **Part III — Web Layer** | [070](docs/chapters/070-spring-mvc-request-lifecycle.md) | Spring MVC Request Lifecycle — DispatcherServlet, Interceptors, Filters | ✅ Complete |
 | | [080](docs/chapters/080-validation.md) | Validation — Bean Validation, Custom Validators, Validation Groups | ✅ Complete |
-| | [090](docs/chapters/090-exception-handling.md) | Exception Handling — @ControllerAdvice, ProblemDetail (RFC 9457) | ⬜ Not Started |
+| | [090](docs/chapters/090-exception-handling.md) | Exception Handling — @ControllerAdvice, ProblemDetail (RFC 9457) | ✅ Complete |
 | | [100](docs/chapters/100-jackson-serialization.md) | Jackson — Serialization, Custom Serializers, Mixins, Views, Pitfalls | ⬜ Not Started |
 | **Part IV — AOP & Proxies** | [110](docs/chapters/110-spring-aop-and-proxy-mechanism.md) | Spring AOP & Proxies — JDK Dynamic Proxy vs CGLIB, Self-Invocation | ⬜ Not Started |
 | **Part V — Data Access** | [120](docs/chapters/120-spring-data-jpa-fundamentals.md) | Spring Data JPA — Repository Abstraction, Query Derivation, Projections | ⬜ Not Started |
