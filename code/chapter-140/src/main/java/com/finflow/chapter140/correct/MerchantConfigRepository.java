@@ -1,0 +1,8 @@
+package com.finflow.chapter140.correct;
+
+import com.finflow.chapter140.domain.MerchantConfigEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.UUID;
+
+public interface MerchantConfigRepository extends JpaRepository<MerchantConfigEntity, UUID> {
+}
