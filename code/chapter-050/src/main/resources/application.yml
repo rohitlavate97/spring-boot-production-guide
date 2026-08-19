@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: chapter-050-dependency-injection
+  main:
+    allow-circular-references: false  # Spring Boot 2.6+ default
