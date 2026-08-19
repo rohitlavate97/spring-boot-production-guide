@@ -40,7 +40,7 @@
 
 | Chapter | Topic | Status |
 |---------|-------|--------|
-| [110](chapters/110-spring-aop-and-proxy-mechanism.md) | Spring AOP & Proxy Mechanism — JDK Dynamic Proxy vs CGLIB, Proxy Pitfalls, Self-Invocation | ⬜ Not Started |
+| [110](chapters/110-spring-aop-and-proxy-mechanism.md) | Spring AOP & Proxy Mechanism — JDK Dynamic Proxy vs CGLIB, Proxy Pitfalls, Self-Invocation | ✅ Complete |
 
 ### Part V — Data Access & Hibernate
 
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 10 / 40 chapters completed
+## Progress: 11 / 40 chapters completed
 
 ---
 
