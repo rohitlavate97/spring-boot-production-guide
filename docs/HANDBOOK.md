@@ -24,7 +24,7 @@
 |---------|-------|--------|
 | [030](chapters/030-spring-core-ioc-application-context.md) | Spring Core — IoC Container, BeanFactory vs ApplicationContext | ✅ Complete |
 | [040](chapters/040-bean-lifecycle-and-scopes.md) | Bean Lifecycle & Scopes — Initialization, Destruction, Singleton, Prototype, Request, Session | ✅ Complete |
-| [050](chapters/050-dependency-injection-deep-dive.md) | Dependency Injection Deep Dive — Constructor vs Field vs Setter, Qualifiers, Circular Dependencies | ⬜ Not Started |
+| [050](chapters/050-dependency-injection-deep-dive.md) | Dependency Injection Deep Dive — Constructor vs Field vs Setter, Qualifiers, Circular Dependencies | ✅ Complete |
 | [060](chapters/060-spring-boot-auto-configuration.md) | Spring Boot Auto-Configuration — Conditional Annotations, spring.factories, META-INF, Custom Starters | ⬜ Not Started |
 
 ### Part III — Web Layer
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 4 / 40 chapters completed
+## Progress: 5 / 40 chapters completed
 
 ---
 
