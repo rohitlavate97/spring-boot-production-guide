@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: chapter-100-jackson-serialization
+server:
+  port: 8080
