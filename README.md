@@ -27,7 +27,7 @@ Full architectural topology, database schemas, failure domains, and infrastructu
 
 ## 📊 Curriculum & Progress Tracker
 
-**Progress:** `6 / 40` Chapters Completed
+**Progress:** `7 / 40` Chapters Completed
 
 Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](docs/HANDBOOK.md).
 
@@ -39,7 +39,7 @@ Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](d
 | | [040](docs/chapters/040-bean-lifecycle-and-scopes.md) | Bean Lifecycle & Scopes — Initialization, Destruction, Custom Scopes | ✅ Complete |
 | | [050](docs/chapters/050-dependency-injection-deep-dive.md) | Dependency Injection — Constructor vs Field, Qualifiers, Circular Dependencies | ✅ Complete |
 | | [060](docs/chapters/060-spring-boot-auto-configuration.md) | Auto-Configuration — Conditional Annotations, AutoConfiguration.imports, Starters | ✅ Complete |
-| **Part III — Web Layer** | [070](docs/chapters/070-spring-mvc-request-lifecycle.md) | Spring MVC Request Lifecycle — DispatcherServlet, Interceptors, Filters | ⬜ Not Started |
+| **Part III — Web Layer** | [070](docs/chapters/070-spring-mvc-request-lifecycle.md) | Spring MVC Request Lifecycle — DispatcherServlet, Interceptors, Filters | ✅ Complete |
 | | [080](docs/chapters/080-validation.md) | Validation — Bean Validation, Custom Validators, Validation Groups | ⬜ Not Started |
 | | [090](docs/chapters/090-exception-handling.md) | Exception Handling — @ControllerAdvice, ProblemDetail (RFC 9457) | ⬜ Not Started |
 | | [100](docs/chapters/100-jackson-serialization.md) | Jackson — Serialization, Custom Serializers, Mixins, Views, Pitfalls | ⬜ Not Started |

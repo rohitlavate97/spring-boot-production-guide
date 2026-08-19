@@ -31,7 +31,7 @@
 
 | Chapter | Topic | Status |
 |---------|-------|--------|
-| [070](chapters/070-spring-mvc-request-lifecycle.md) | Spring MVC Request Lifecycle — DispatcherServlet, HandlerMapping, Interceptors, Argument Resolvers | ⬜ Not Started |
+| [070](chapters/070-spring-mvc-request-lifecycle.md) | Spring MVC Request Lifecycle — DispatcherServlet, HandlerMapping, Interceptors, Argument Resolvers | ✅ Complete |
 | [080](chapters/080-validation.md) | Validation — Bean Validation, Custom Validators, Validation Groups, Error Response Contracts | ⬜ Not Started |
 | [090](chapters/090-exception-handling.md) | Exception Handling — @ControllerAdvice, ProblemDetail (RFC 9457), Error Hierarchy Design | ⬜ Not Started |
 | [100](chapters/100-jackson-serialization.md) | Jackson — Serialization, Deserialization, Custom Serializers, Mixins, Views, Production Pitfalls | ⬜ Not Started |
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 6 / 40 chapters completed
+## Progress: 7 / 40 chapters completed
 
 ---
 
