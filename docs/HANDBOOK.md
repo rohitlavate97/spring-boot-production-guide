@@ -47,7 +47,7 @@
 | Chapter | Topic | Status |
 |---------|-------|--------|
 | [120](chapters/120-spring-data-jpa-fundamentals.md) | Spring Data JPA — Repository Abstraction, Query Derivation, @Query, Projections, Specifications | ✅ Complete |
-| [130](chapters/130-hibernate-internals-entity-lifecycle.md) | Hibernate Internals & Entity Lifecycle — SessionFactory, Session, Entity States (Transient, Managed, Detached, Removed) | ⬜ Not Started |
+| [130](chapters/130-hibernate-internals-entity-lifecycle.md) | Hibernate Internals & Entity Lifecycle — SessionFactory, Session, Entity States (Transient, Managed, Detached, Removed) | ✅ Complete |
 | [140](chapters/140-persistence-context-flush-dirty-checking.md) | Persistence Context — Dirty Checking, Flush Modes, Write-Behind, ActionQueue | ⬜ Not Started |
 | [150](chapters/150-lazy-loading-and-entity-graphs.md) | Lazy Loading & Entity Graphs — N+1 Problem, JOIN FETCH, @EntityGraph, Batch Fetching | ⬜ Not Started |
 | [160](chapters/160-batch-processing.md) | Batch Processing — JDBC Batching, Hibernate Batching, Bulk Operations, Chunk Processing | ⬜ Not Started |
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 12 / 40 chapters completed
+## Progress: 13 / 40 chapters completed
 
 ---
 

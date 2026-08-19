@@ -27,7 +27,7 @@ Full architectural topology, database schemas, failure domains, and infrastructu
 
 ## 📊 Curriculum & Progress Tracker
 
-**Progress:** `12 / 40` Chapters Completed
+**Progress:** `13 / 40` Chapters Completed
 
 Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](docs/HANDBOOK.md).
 
