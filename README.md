@@ -27,7 +27,7 @@ Full architectural topology, database schemas, failure domains, and infrastructu
 
 ## 📊 Curriculum & Progress Tracker
 
-**Progress:** `19 / 40` Chapters Completed
+**Progress:** `20 / 40` Chapters Completed (50% Milestone Reached!)
 
 Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](docs/HANDBOOK.md).
 
@@ -52,7 +52,7 @@ Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](d
 | **Part VI — Transactions** | [170](docs/chapters/170-transactions-propagation-isolation.md) | Transactions — @Transactional Internals, Propagation, Isolation Levels | ✅ Complete |
 | | [180](docs/chapters/180-optimistic-pessimistic-locking.md) | Locking — @Version Optimistic Locking, SELECT FOR UPDATE, Deadlocks | ✅ Complete |
 | **Part VII — Databases** | [190](docs/chapters/190-hikaricp-connection-pool.md) | HikariCP Deep Dive — Pool Sizing, Leak Detection, Metrics Lifecycle | ✅ Complete |
-| | [200](docs/chapters/200-postgresql-mysql-for-spring.md) | PostgreSQL & MySQL — Engine Differences, Indexes, Execution Plans, MVCC | ⬜ Not Started |
+| | [200](docs/chapters/200-postgresql-mysql-for-spring.md) | PostgreSQL & MySQL — Engine Differences, Indexes, Execution Plans, MVCC | ✅ Complete |
 | | [210](docs/chapters/210-flyway-liquibase-migrations.md) | Database Migrations — Flyway & Liquibase, Zero-Downtime DDL | ⬜ Not Started |
 | **Part VIII — Security** | [220](docs/chapters/220-spring-security-fundamentals.md) | Spring Security — Filter Chain Architecture, SecurityContext, Method Security | ⬜ Not Started |
 | | [230](docs/chapters/230-jwt-authentication.md) | JWT Authentication — Token Lifecycle, Refresh Tokens, Key Rotation | ⬜ Not Started |
