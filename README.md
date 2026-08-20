@@ -27,7 +27,7 @@ Full architectural topology, database schemas, failure domains, and infrastructu
 
 ## 📊 Curriculum & Progress Tracker
 
-**Progress:** `17 / 40` Chapters Completed
+**Progress:** `18 / 40` Chapters Completed
 
 Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](docs/HANDBOOK.md).
 
@@ -50,7 +50,7 @@ Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](d
 | | [150](docs/chapters/150-lazy-loading-and-entity-graphs.md) | Lazy Loading & Entity Graphs — N+1 Problem, JOIN FETCH, Batch Fetching | ✅ Complete |
 | | [160](docs/chapters/160-batch-processing.md) | Batch Processing — JDBC Batching, Hibernate Batching, Bulk Operations | ✅ Complete |
 | **Part VI — Transactions** | [170](docs/chapters/170-transactions-propagation-isolation.md) | Transactions — @Transactional Internals, Propagation, Isolation Levels | ✅ Complete |
-| | [180](docs/chapters/180-optimistic-pessimistic-locking.md) | Locking — @Version Optimistic Locking, SELECT FOR UPDATE, Deadlocks | ⬜ Not Started |
+| | [180](docs/chapters/180-optimistic-pessimistic-locking.md) | Locking — @Version Optimistic Locking, SELECT FOR UPDATE, Deadlocks | ✅ Complete |
 | **Part VII — Databases** | [190](docs/chapters/190-hikaricp-connection-pool.md) | HikariCP Deep Dive — Pool Sizing, Leak Detection, Metrics Lifecycle | ⬜ Not Started |
 | | [200](docs/chapters/200-postgresql-mysql-for-spring.md) | PostgreSQL & MySQL — Engine Differences, Indexes, Execution Plans, MVCC | ⬜ Not Started |
 | | [210](docs/chapters/210-flyway-liquibase-migrations.md) | Database Migrations — Flyway & Liquibase, Zero-Downtime DDL | ⬜ Not Started |
