@@ -63,7 +63,7 @@
 
 | Chapter | Topic | Status |
 |---------|-------|--------|
-| [190](chapters/190-hikaricp-connection-pool.md) | HikariCP Deep Dive — Pool Sizing, Leak Detection, Metrics, Connection Lifecycle | ⬜ Not Started |
+| [190](chapters/190-hikaricp-connection-pool.md) | HikariCP Deep Dive — Pool Sizing, Leak Detection, Metrics, Connection Lifecycle | ✅ Complete |
 | [200](chapters/200-postgresql-mysql-for-spring.md) | PostgreSQL & MySQL — Engine Differences, Index Strategy, Query Plans, MVCC, Vacuum | ⬜ Not Started |
 | [210](chapters/210-flyway-liquibase-migrations.md) | Database Migrations — Flyway & Liquibase, Zero-Downtime DDL, Rollback Strategy | ⬜ Not Started |
 
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 18 / 40 chapters completed
+## Progress: 19 / 40 chapters completed
 
 ---
 
