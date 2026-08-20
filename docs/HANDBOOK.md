@@ -79,7 +79,7 @@
 
 | Chapter | Topic | Status |
 |---------|-------|--------|
-| [250](chapters/250-redis-spring-cache.md) | Redis & Spring Cache — @Cacheable Internals, Eviction, Stampede Prevention, Cluster Failover | ⬜ Not Started |
+| [250](chapters/250-redis-spring-cache.md) | Redis & Spring Cache — @Cacheable Internals, Eviction, Stampede Prevention, Cluster Failover | ✅ Complete |
 
 ### Part X — Messaging
 
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 24 / 40 chapters completed
+## Progress: 25 / 40 chapters completed
 
 ---
 
