@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: payment-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    prometheus:
+      enabled: true
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+      region: us-east-1
+      environment: prod
+    distribution:
+      percentiles-histogram:
+        payment.processing.duration: true
+        http.server.requests: true
+      slo:
+        payment.processing.duration: 100ms, 300ms, 500ms
+        http.server.requests: 100ms, 300ms, 500ms
