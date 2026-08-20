@@ -27,7 +27,7 @@ Full architectural topology, database schemas, failure domains, and infrastructu
 
 ## 📊 Curriculum & Progress Tracker
 
-**Progress:** `29 / 40` Chapters Completed
+**Progress:** `30 / 40` Chapters Completed
 
 Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](docs/HANDBOOK.md).
 
@@ -62,7 +62,7 @@ Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](d
 | | [270](docs/chapters/270-rabbitmq-with-spring-boot.md) | RabbitMQ — Exchanges, Queues, ACKs, Dead Letter Exchanges | ✅ Complete |
 | **Part XI — Async** | [280](docs/chapters/280-scheduling-cron-jobs.md) | Scheduling — @Scheduled, ShedLock Distributed Locking, Leader Election | ✅ Complete |
 | | [290](docs/chapters/290-async-processing-thread-pools.md) | Async & Thread Pools — ThreadPoolTaskExecutor, Backpressure, Queues | ✅ Complete |
-| **Part XII — Containers** | [300](docs/chapters/300-docker-for-spring-boot.md) | Docker — Multi-Stage Builds, Layered JARs, cgroup Limits, Distroless | ⬜ Not Started |
+| **Part XII — Containers** | [300](docs/chapters/300-docker-for-spring-boot.md) | Docker — Multi-Stage Builds, Layered JARs, cgroup Limits, Distroless | ✅ Complete |
 | | [310](docs/chapters/310-kubernetes-for-spring-boot.md) | Kubernetes — Probes, Graceful Shutdown, PDB, HPA, Rolling Deployments | ⬜ Not Started |
 | **Part XIII — Metrics** | [320](docs/chapters/320-micrometer-prometheus-grafana.md) | Micrometer, Prometheus & Grafana — Custom Metrics, Dashboards, Alerting | ⬜ Not Started |
 | | [330](docs/chapters/330-opentelemetry-distributed-tracing.md) | OpenTelemetry & Distributed Tracing — W3C Propagation, MDC Correlation | ⬜ Not Started |
