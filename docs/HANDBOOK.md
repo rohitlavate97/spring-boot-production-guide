@@ -100,7 +100,7 @@
 | Chapter | Topic | Status |
 |---------|-------|--------|
 | [300](chapters/300-docker-for-spring-boot.md) | Docker — Multi-Stage Builds, Layered JARs, JVM in Containers, cgroup Limits, Distroless Images | ✅ Complete |
-| [310](chapters/310-kubernetes-for-spring-boot.md) | Kubernetes — Probes, Resource Limits, ConfigMaps/Secrets, Rolling Updates, PDB, HPA, Graceful Shutdown | ⬜ Not Started |
+| [310](chapters/310-kubernetes-for-spring-boot.md) | Kubernetes — Probes, Resource Limits, ConfigMaps/Secrets, Rolling Updates, PDB, HPA, Graceful Shutdown | ✅ Complete |
 
 ### Part XIII — Observability
 
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 30 / 40 chapters completed
+## Progress: 31 / 40 chapters completed
 
 ---
 
