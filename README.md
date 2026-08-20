@@ -1,4 +1,4 @@
-﻿# Spring Boot Production Mastery
+# Spring Boot Production Mastery
 
 > **Enterprise Production Engineering Handbook & Reference Codebase**
 > A chapter-by-chapter curriculum teaching Spring Boot 3.x and Java 21 from the perspective of real production incidents: how large-scale systems fail, how to debug them under pressure, and how to engineer resilient architectures.
@@ -27,7 +27,7 @@ Full architectural topology, database schemas, failure domains, and infrastructu
 
 ## 📊 Curriculum & Progress Tracker
 
-**Progress:** `14 / 40` Chapters Completed
+**Progress:** `15 / 40` Chapters Completed
 
 Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](docs/HANDBOOK.md).
 
@@ -45,9 +45,9 @@ Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](d
 | | [100](docs/chapters/100-jackson-serialization.md) | Jackson — Serialization, Custom Serializers, Mixins, Views, Pitfalls | ✅ Complete |
 | **Part IV — AOP & Proxies** | [110](docs/chapters/110-spring-aop-and-proxy-mechanism.md) | Spring AOP & Proxies — JDK Dynamic Proxy vs CGLIB, Self-Invocation | ✅ Complete |
 | **Part V — Data Access** | [120](docs/chapters/120-spring-data-jpa-fundamentals.md) | Spring Data JPA — Repository Abstraction, Query Derivation, Projections | ✅ Complete |
-| | [130](docs/chapters/130-hibernate-internals-entity-lifecycle.md) | Hibernate Internals & Entity Lifecycle — Session, Entity States | ⬜ Not Started |
-| | [140](docs/chapters/140-persistence-context-flush-dirty-checking.md) | Persistence Context — Dirty Checking, Flush Modes, Write-Behind | ⬜ Not Started |
-| | [150](docs/chapters/150-lazy-loading-and-entity-graphs.md) | Lazy Loading & Entity Graphs — N+1 Problem, JOIN FETCH, Batch Fetching | ⬜ Not Started |
+| | [130](docs/chapters/130-hibernate-internals-entity-lifecycle.md) | Hibernate Internals & Entity Lifecycle — Session, Entity States | ✅ Complete |
+| | [140](docs/chapters/140-persistence-context-flush-dirty-checking.md) | Persistence Context — Dirty Checking, Flush Modes, Write-Behind | ✅ Complete |
+| | [150](docs/chapters/150-lazy-loading-and-entity-graphs.md) | Lazy Loading & Entity Graphs — N+1 Problem, JOIN FETCH, Batch Fetching | ✅ Complete |
 | | [160](docs/chapters/160-batch-processing.md) | Batch Processing — JDBC Batching, Hibernate Batching, Bulk Operations | ⬜ Not Started |
 | **Part VI — Transactions** | [170](docs/chapters/170-transactions-propagation-isolation.md) | Transactions — @Transactional Internals, Propagation, Isolation Levels | ⬜ Not Started |
 | | [180](docs/chapters/180-optimistic-pessimistic-locking.md) | Locking — @Version Optimistic Locking, SELECT FOR UPDATE, Deadlocks | ⬜ Not Started |
