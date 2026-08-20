@@ -27,7 +27,7 @@ Full architectural topology, database schemas, failure domains, and infrastructu
 
 ## 📊 Curriculum & Progress Tracker
 
-**Progress:** `25 / 40` Chapters Completed
+**Progress:** `26 / 40` Chapters Completed
 
 Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](docs/HANDBOOK.md).
 
@@ -58,7 +58,7 @@ Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](d
 | | [230](docs/chapters/230-jwt-authentication.md) | JWT Authentication — Token Lifecycle, Refresh Tokens, Key Rotation | ✅ Complete |
 | | [240](docs/chapters/240-oauth2-openid-connect.md) | OAuth2 & OpenID Connect — Authorization Server, Resource Server | ✅ Complete |
 | **Part IX — Caching** | [250](docs/chapters/250-redis-spring-cache.md) | Redis & Spring Cache — @Cacheable Internals, Stampede Prevention, Failover | ✅ Complete |
-| **Part X — Messaging** | [260](docs/chapters/260-kafka-with-spring-boot.md) | Kafka — Producer/Consumer Internals, Consumer Groups, Rebalancing, DLQ | ⬜ Not Started |
+| **Part X — Messaging** | [260](docs/chapters/260-kafka-with-spring-boot.md) | Kafka — Producer/Consumer Internals, Consumer Groups, Rebalancing, DLQ | ✅ Complete |
 | | [270](docs/chapters/270-rabbitmq-with-spring-boot.md) | RabbitMQ — Exchanges, Queues, ACKs, Dead Letter Exchanges | ⬜ Not Started |
 | **Part XI — Async** | [280](docs/chapters/280-scheduling-cron-jobs.md) | Scheduling — @Scheduled, ShedLock Distributed Locking, Leader Election | ⬜ Not Started |
 | | [290](docs/chapters/290-async-processing-thread-pools.md) | Async & Thread Pools — ThreadPoolTaskExecutor, Backpressure, Queues | ⬜ Not Started |
