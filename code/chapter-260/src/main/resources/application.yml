@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      acks: all
+      retries: 2147483647
+      properties:
+        enable.idempotence: true
+        max.in.flight.requests.per.connection: 5
+    consumer:
+      group-id: finflow-payment-group
+      enable-auto-commit: false
+      auto-offset-reset: earliest
+      properties:
+        max.poll.interval.ms: 300000
+        partition.assignment.strategy: org.apache.kafka.clients.consumer.CooperativeStickyAssignor
+    listener:
+      ack-mode: manual_immediate
