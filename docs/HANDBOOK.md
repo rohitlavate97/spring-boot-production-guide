@@ -86,7 +86,7 @@
 | Chapter | Topic | Status |
 |---------|-------|--------|
 | [260](chapters/260-kafka-with-spring-boot.md) | Kafka — Producer/Consumer Internals, Exactly-Once, Consumer Groups, Rebalancing, DLQ | ✅ Complete |
-| [270](chapters/270-rabbitmq-with-spring-boot.md) | RabbitMQ — Exchanges, Queues, Acknowledgments, Dead Letter Exchanges, Retry Patterns | ⬜ Not Started |
+| [270](chapters/270-rabbitmq-with-spring-boot.md) | RabbitMQ — Exchanges, Queues, Acknowledgments, Dead Letter Exchanges, Retry Patterns | ✅ Complete |
 
 ### Part XI — Async & Scheduling
 
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 26 / 40 chapters completed
+## Progress: 27 / 40 chapters completed
 
 ---
 
