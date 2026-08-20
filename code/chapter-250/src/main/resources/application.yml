@@ -1,0 +1,7 @@
+spring:
+  cache:
+    type: simple
+    cache-names:
+      - merchant_fee_schedules
+      - merchant_fee_schedules_hardened
+      - null_safe_merchant_fees
