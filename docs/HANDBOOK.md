@@ -92,7 +92,7 @@
 
 | Chapter | Topic | Status |
 |---------|-------|--------|
-| [280](chapters/280-scheduling-cron-jobs.md) | Scheduling — @Scheduled, Cron Expressions, Distributed Locking (ShedLock), Leader Election | ⬜ Not Started |
+| [280](chapters/280-scheduling-cron-jobs.md) | Scheduling — @Scheduled, Cron Expressions, Distributed Locking (ShedLock), Leader Election | ✅ Complete |
 | [290](chapters/290-async-processing-thread-pools.md) | Async Processing & Thread Pools — @Async, CompletableFuture, ThreadPoolTaskExecutor, Backpressure | ⬜ Not Started |
 
 ### Part XII — Containerization & Orchestration
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 27 / 40 chapters completed
+## Progress: 28 / 40 chapters completed
 
 ---
 

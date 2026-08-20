@@ -27,7 +27,7 @@ Full architectural topology, database schemas, failure domains, and infrastructu
 
 ## 📊 Curriculum & Progress Tracker
 
-**Progress:** `27 / 40` Chapters Completed
+**Progress:** `28 / 40` Chapters Completed
 
 Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](docs/HANDBOOK.md).
 
@@ -60,7 +60,7 @@ Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](d
 | **Part IX — Caching** | [250](docs/chapters/250-redis-spring-cache.md) | Redis & Spring Cache — @Cacheable Internals, Stampede Prevention, Failover | ✅ Complete |
 | **Part X — Messaging** | [260](docs/chapters/260-kafka-with-spring-boot.md) | Kafka — Producer/Consumer Internals, Consumer Groups, Rebalancing, DLQ | ✅ Complete |
 | | [270](docs/chapters/270-rabbitmq-with-spring-boot.md) | RabbitMQ — Exchanges, Queues, ACKs, Dead Letter Exchanges | ✅ Complete |
-| **Part XI — Async** | [280](docs/chapters/280-scheduling-cron-jobs.md) | Scheduling — @Scheduled, ShedLock Distributed Locking, Leader Election | ⬜ Not Started |
+| **Part XI — Async** | [280](docs/chapters/280-scheduling-cron-jobs.md) | Scheduling — @Scheduled, ShedLock Distributed Locking, Leader Election | ✅ Complete |
 | | [290](docs/chapters/290-async-processing-thread-pools.md) | Async & Thread Pools — ThreadPoolTaskExecutor, Backpressure, Queues | ⬜ Not Started |
 | **Part XII — Containers** | [300](docs/chapters/300-docker-for-spring-boot.md) | Docker — Multi-Stage Builds, Layered JARs, cgroup Limits, Distroless | ⬜ Not Started |
 | | [310](docs/chapters/310-kubernetes-for-spring-boot.md) | Kubernetes — Probes, Graceful Shutdown, PDB, HPA, Rolling Deployments | ⬜ Not Started |
