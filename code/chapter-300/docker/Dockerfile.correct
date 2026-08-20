@@ -1,0 +1,40 @@
+# Stage 1: Build & Layer Extraction
+FROM eclipse-temurin:21-jdk-jammy AS builder
+WORKDIR /builder
+COPY target/*.jar app.jar
+RUN java -Djarmode=layertools -jar app.jar extract
+
+# Stage 2: Hardened Production Runtime (Non-Root)
+FROM eclipse-temurin:21-jre-jammy AS runtime
+WORKDIR /application
+
+# Create dedicated non-root user and group (UID/GID 10001)
+RUN groupadd -g 10001 appgroup && \
+    useradd -u 10001 -g appgroup -s /bin/bash -m appuser
+
+# Copy extracted layers in order of change frequency (Docker cache optimization)
+COPY --from=builder --chown=appuser:appgroup /builder/dependencies/ ./
+COPY --from=builder --chown=appuser:appgroup /builder/spring-boot-loader/ ./
+COPY --from=builder --chown=appuser:appgroup /builder/snapshot-dependencies/ ./
+COPY --from=builder --chown=appuser:appgroup /builder/application/ ./
+
+USER appuser:appgroup
+
+# Production JVM Container Flags:
+# -XX:+UseContainerSupport: Detects cgroup v1/v2 memory and CPU limits
+# -XX:MaxRAMPercentage=75.0: Dedicates 75% of container RAM to Heap (25% buffer for off-heap Metaspace, Netty Direct Memory, Thread Stacks)
+# -XX:InitialRAMPercentage=50.0: Pre-allocates initial heap to avoid heap-expansion pauses
+# -XX:+ExitOnOutOfMemoryError: Fail-fast on OOM to trigger instant Kubernetes pod restart
+# -XX:+UseG1GC: Standard production low-latency collector
+ENV JAVA_OPTS="-XX:+UseContainerSupport \
+               -XX:MaxRAMPercentage=75.0 \
+               -XX:InitialRAMPercentage=50.0 \
+               -XX:+ExitOnOutOfMemoryError \
+               -XX:+UseG1GC \
+               -Djava.security.egd=file:/dev/./urandom"
+
+EXPOSE 8080
+
+# Spring Boot 3.2+ JarLauncher package: org.springframework.boot.loader.launch.JarLauncher
+# "exec" replaces the shell process so Java becomes PID 1, receiving SIGTERM for graceful shutdown
+ENTRYPOINT ["sh", "-c", "exec java $JAVA_OPTS org.springframework.boot.loader.launch.JarLauncher"]

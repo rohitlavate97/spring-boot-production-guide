@@ -1,0 +1,15 @@
+# =========================================================================
+# ANTI-PATTERN DOCKERFILE (DO NOT USE IN PRODUCTION)
+# =========================================================================
+# Flaw 1: Uses full JDK instead of slim JRE (Inflates image size to > 500MB)
+FROM eclipse-temurin:21-jdk-jammy
+WORKDIR /app
+
+# Flaw 2: Copies monolithic fat JAR (Invalidates entire layer cache on any 1-line change)
+COPY target/*.jar app.jar
+
+# Flaw 3: Runs as root (Security violation; container breakout risk)
+
+# Flaw 4: Hardcodes fixed -Xmx4g (Fails to adapt to cgroup limits; crashes on 2GB container)
+# Flaw 5: Shell form CMD without 'exec' (Swallows SIGTERM; breaks graceful shutdown)
+CMD java -Xmx4g -jar app.jar
