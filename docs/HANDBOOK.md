@@ -72,7 +72,7 @@
 | Chapter | Topic | Status |
 |---------|-------|--------|
 | [220](chapters/220-spring-security-fundamentals.md) | Spring Security — Filter Chain, Authentication Architecture, SecurityContext, Method Security | ✅ Complete |
-| [230](chapters/230-jwt-authentication.md) | JWT Authentication — Token Lifecycle, Refresh Tokens, Key Rotation, Common Vulnerabilities | ⬜ Not Started |
+| [230](chapters/230-jwt-authentication.md) | JWT Authentication — Token Lifecycle, Refresh Tokens, Key Rotation, Common Vulnerabilities | ✅ Complete |
 | [240](chapters/240-oauth2-openid-connect.md) | OAuth2 & OpenID Connect — Authorization Server, Resource Server, Token Introspection | ⬜ Not Started |
 
 ### Part IX — Caching
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 22 / 40 chapters completed
+## Progress: 23 / 40 chapters completed
 
 ---
 
