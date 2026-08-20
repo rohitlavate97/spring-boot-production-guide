@@ -56,7 +56,7 @@
 
 | Chapter | Topic | Status |
 |---------|-------|--------|
-| [170](chapters/170-transactions-propagation-isolation.md) | Transactions — @Transactional Internals, Propagation Behaviors, Isolation Levels | ⬜ Not Started |
+| [170](chapters/170-transactions-propagation-isolation.md) | Transactions — @Transactional Internals, Propagation Behaviors, Isolation Levels | ✅ Complete |
 | [180](chapters/180-optimistic-pessimistic-locking.md) | Optimistic & Pessimistic Locking — @Version, SELECT FOR UPDATE, Deadlock Prevention | ⬜ Not Started |
 
 ### Part VII — Connection Management & Databases
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 16 / 40 chapters completed
+## Progress: 17 / 40 chapters completed
 
 ---
 
