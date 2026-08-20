@@ -27,7 +27,7 @@ Full architectural topology, database schemas, failure domains, and infrastructu
 
 ## 📊 Curriculum & Progress Tracker
 
-**Progress:** `31 / 40` Chapters Completed
+**Progress:** `32 / 40` Chapters Completed
 
 Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](docs/HANDBOOK.md).
 
@@ -64,7 +64,7 @@ Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](d
 | | [290](docs/chapters/290-async-processing-thread-pools.md) | Async & Thread Pools — ThreadPoolTaskExecutor, Backpressure, Queues | ✅ Complete |
 | **Part XII — Containers** | [300](docs/chapters/300-docker-for-spring-boot.md) | Docker — Multi-Stage Builds, Layered JARs, cgroup Limits, Distroless | ✅ Complete |
 | | [310](docs/chapters/310-kubernetes-for-spring-boot.md) | Kubernetes — Probes, Graceful Shutdown, PDB, HPA, Rolling Deployments | ✅ Complete |
-| **Part XIII — Metrics** | [320](docs/chapters/320-micrometer-prometheus-grafana.md) | Micrometer, Prometheus & Grafana — Custom Metrics, Dashboards, Alerting | ⬜ Not Started |
+| **Part XIII — Metrics** | [320](docs/chapters/320-micrometer-prometheus-grafana.md) | Micrometer, Prometheus & Grafana — Custom Metrics, Dashboards, Alerting | ✅ Complete |
 | | [330](docs/chapters/330-opentelemetry-distributed-tracing.md) | OpenTelemetry & Distributed Tracing — W3C Propagation, MDC Correlation | ⬜ Not Started |
 | **Part XIV — Resilience** | [340](docs/chapters/340-resilience4j-circuit-breaker-rate-limiting.md) | Resilience4j — Circuit Breaker, Retry, Rate Limiter, Bulkhead | ⬜ Not Started |
 | | [350](docs/chapters/350-api-gateway-spring-cloud-gateway.md) | API Gateway — Spring Cloud Gateway, Route Predicates, Filters, Rate Limits | ⬜ Not Started |

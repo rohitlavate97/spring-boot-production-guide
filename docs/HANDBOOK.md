@@ -106,7 +106,7 @@
 
 | Chapter | Topic | Status |
 |---------|-------|--------|
-| [320](chapters/320-micrometer-prometheus-grafana.md) | Micrometer, Prometheus & Grafana — Custom Metrics, Dashboards, Alerting, SLOs | ⬜ Not Started |
+| [320](chapters/320-micrometer-prometheus-grafana.md) | Micrometer, Prometheus & Grafana — Custom Metrics, Dashboards, Alerting, SLOs | ✅ Complete |
 | [330](chapters/330-opentelemetry-distributed-tracing.md) | OpenTelemetry & Distributed Tracing — Auto-instrumentation, Span Propagation, Trace-Log Correlation | ⬜ Not Started |
 
 ### Part XIV — Resilience & Traffic Management
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 31 / 40 chapters completed
+## Progress: 32 / 40 chapters completed
 
 ---
 
