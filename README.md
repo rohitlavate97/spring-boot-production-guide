@@ -27,7 +27,7 @@ Full architectural topology, database schemas, failure domains, and infrastructu
 
 ## 📊 Curriculum & Progress Tracker
 
-**Progress:** `21 / 40` Chapters Completed
+**Progress:** `22 / 40` Chapters Completed
 
 Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](docs/HANDBOOK.md).
 
@@ -54,7 +54,7 @@ Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](d
 | **Part VII — Databases** | [190](docs/chapters/190-hikaricp-connection-pool.md) | HikariCP Deep Dive — Pool Sizing, Leak Detection, Metrics Lifecycle | ✅ Complete |
 | | [200](docs/chapters/200-postgresql-mysql-for-spring.md) | PostgreSQL & MySQL — Engine Differences, Indexes, Execution Plans, MVCC | ✅ Complete |
 | | [210](docs/chapters/210-flyway-liquibase-migrations.md) | Database Migrations — Flyway & Liquibase, Zero-Downtime DDL | ✅ Complete |
-| **Part VIII — Security** | [220](docs/chapters/220-spring-security-fundamentals.md) | Spring Security — Filter Chain Architecture, SecurityContext, Method Security | ⬜ Not Started |
+| **Part VIII — Security** | [220](docs/chapters/220-spring-security-fundamentals.md) | Spring Security — Filter Chain Architecture, SecurityContext, Method Security | ✅ Complete |
 | | [230](docs/chapters/230-jwt-authentication.md) | JWT Authentication — Token Lifecycle, Refresh Tokens, Key Rotation | ⬜ Not Started |
 | | [240](docs/chapters/240-oauth2-openid-connect.md) | OAuth2 & OpenID Connect — Authorization Server, Resource Server | ⬜ Not Started |
 | **Part IX — Caching** | [250](docs/chapters/250-redis-spring-cache.md) | Redis & Spring Cache — @Cacheable Internals, Stampede Prevention, Failover | ⬜ Not Started |
