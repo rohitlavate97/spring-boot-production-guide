@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: startup-failures-troubleshooting-lab
+  main:
+    # Explicitly demonstrate that circular references are disallowed by default in Spring Boot 2.6+ / 3.x
+    allow-circular-references: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
