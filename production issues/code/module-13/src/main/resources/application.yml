@@ -1,0 +1,15 @@
+server:
+  port: 8093
+
+spring:
+  application:
+    name: jvm-threads-async-saturation-lab
+  threads:
+    virtual:
+      enabled: false # Demonstrates platform thread pools and virtual thread comparison
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
