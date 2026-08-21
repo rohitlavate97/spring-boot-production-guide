@@ -121,7 +121,7 @@
 
 | Chapter | Topic | Status |
 |---------|-------|--------|
-| [370](chapters/370-distributed-transactions.md) | Distributed Transactions — Saga Pattern, Transactional Outbox, Choreography vs Orchestration | ⬜ Not Started |
+| [370](chapters/370-distributed-transactions.md) | Distributed Transactions — Saga Pattern, Transactional Outbox, Choreography vs Orchestration | ✅ Complete |
 
 ### Part XVI — Production Engineering
 
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 36 / 40 chapters completed
+## Progress: 37 / 40 chapters completed
 
 ---
 
