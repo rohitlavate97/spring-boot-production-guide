@@ -1,0 +1,12 @@
+server:
+  port: 8094
+
+spring:
+  application:
+    name: jvm-memory-gc-oom-troubleshooting-lab
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus

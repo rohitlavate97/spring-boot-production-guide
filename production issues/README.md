@@ -43,7 +43,7 @@ Spring Boot Application
 | **[11](docs/module-11-spring-security-jwt-filter-chain.md)** | **Spring Security, JWT & Filter Chain Breakages** | Security / Auth | Advanced | ✅ Complete |
 | **[12](docs/module-12-external-api-timeouts-circuit-breakers.md)** | **External API Timeouts, Retries & Cascading Cascades** | Distributed Systems | Advanced | ✅ Complete |
 | **[13](docs/module-13-jvm-threads-async-pool-saturation.md)** | **JVM Threads, Async & Thread Pool Saturation** | Concurrency / JVM | Expert | ✅ Complete |
-| **14** | **JVM Memory Leaks, Metaspace, GC Thrashing & OOM** | JVM Performance | Expert | ⬜ Planned |
+| **[14](docs/module-14-jvm-memory-leaks-metaspace-gc-oom.md)** | **JVM Memory Leaks, Metaspace, GC Thrashing & OOM** | JVM Performance | Expert | ✅ Complete |
 | **15** | **Logging, Observability, MDC & Tracing Gaps** | Observability / SRE | Advanced | ⬜ Planned |
 | **16** | **Docker Containerization & Cgroup Traps** | Containers | Intermediate | ⬜ Planned |
 | **17** | **Kubernetes Pod Lifecycle, Probes & OOMKilled** | Orchestration / K8s | Advanced | ⬜ Planned |
