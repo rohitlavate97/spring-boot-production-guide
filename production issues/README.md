@@ -29,8 +29,8 @@ Spring Boot Application
 
 | Module | Topic | Domain | Difficulty | Status |
 |:---|:---|:---|:---:|:---:|
-| **[00](docs/00-program-architecture.md)** | **Program Architecture & Tooling Matrix** | Foundation | All Levels | ✅ Active |
-| **[01](docs/module-01-startup-failures.md)** | **Startup & ApplicationContext Failures** | Spring Core / IoC | Intermediate | 🔄 In Progress |
+| **[00](docs/00-program-architecture.md)** | **Program Architecture & Tooling Matrix** | Foundation | All Levels | ✅ Complete |
+| **[01](docs/module-01-startup-failures.md)** | **Startup & ApplicationContext Failures** | Spring Core / IoC | Intermediate | ✅ Complete |
 | **02** | **Configuration & Environment Drift** | Config / Cloud / K8s | Intermediate | ⬜ Planned |
 | **03** | **Maven, Gradle, Java & Dependency Conflicts** | Build & JVM Runtime | Intermediate | ⬜ Planned |
 | **04** | **REST, MVC, HTTP & API Network Errors (4xx/5xx)** | Web Layer / Gateway | Intermediate | ⬜ Planned |
