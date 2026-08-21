@@ -42,7 +42,7 @@ Spring Boot Application
 | **[10](docs/module-10-database-performance-query-plans-deadlocks.md)** | **Database Performance, Query Plans & Deadlocks** | Database Internals | Expert | ✅ Complete |
 | **[11](docs/module-11-spring-security-jwt-filter-chain.md)** | **Spring Security, JWT & Filter Chain Breakages** | Security / Auth | Advanced | ✅ Complete |
 | **[12](docs/module-12-external-api-timeouts-circuit-breakers.md)** | **External API Timeouts, Retries & Cascading Cascades** | Distributed Systems | Advanced | ✅ Complete |
-| **13** | **JVM Threads, Async & Thread Pool Saturation** | Concurrency / JVM | Expert | ⬜ Planned |
+| **[13](docs/module-13-jvm-threads-async-pool-saturation.md)** | **JVM Threads, Async & Thread Pool Saturation** | Concurrency / JVM | Expert | ✅ Complete |
 | **14** | **JVM Memory Leaks, Metaspace, GC Thrashing & OOM** | JVM Performance | Expert | ⬜ Planned |
 | **15** | **Logging, Observability, MDC & Tracing Gaps** | Observability / SRE | Advanced | ⬜ Planned |
 | **16** | **Docker Containerization & Cgroup Traps** | Containers | Intermediate | ⬜ Planned |
