@@ -38,7 +38,7 @@ Spring Boot Application
 | **[06](docs/module-06-aop-proxy-problems.md)** | **Spring AOP & Proxy Traps (Self-Invocation, Aspects)** | Spring Core / AOP | Advanced | ✅ Complete |
 | **[07](docs/module-07-spring-transactions.md)** | **Spring Transactions & Isolation Hazards** | Data & Tx Engine | Advanced | ✅ Complete |
 | **[08](docs/module-08-jpa-hibernate-bottlenecks.md)** | **JPA & Hibernate Production Bottlenecks** | ORM / Persistence | Advanced | ✅ Complete |
-| **09** | **Database & HikariCP Connection Pool Exhaustion** | Infrastructure / DB | Advanced | ⬜ Planned |
+| **[09](docs/module-09-hikaricp-connection-pool-exhaustion.md)** | **Database & HikariCP Connection Pool Exhaustion** | Infrastructure / DB | Advanced | ✅ Complete |
 | **10** | **Database Performance, Query Plans & Deadlocks** | Database Internals | Expert | ⬜ Planned |
 | **11** | **Spring Security, JWT & Filter Chain Breakages** | Security / Auth | Advanced | ⬜ Planned |
 | **12** | **External API Timeouts, Retries & Cascading Cascades** | Distributed Systems | Advanced | ⬜ Planned |
