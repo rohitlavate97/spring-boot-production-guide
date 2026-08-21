@@ -1,0 +1,21 @@
+server:
+  port: 8095
+
+spring:
+  application:
+    name: logging-observability-mdc-tracing-lab
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  tracing:
+    sampling:
+      probability: 1.0 # 100% sample rate for lab testing
+    propagation:
+      type: W3C,B3
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [corrId=%X{correlationId:-NONE}, traceId=%X{traceId:-NONE}] %logger{36} - %msg%n"
