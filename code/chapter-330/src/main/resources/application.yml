@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: payment-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  tracing:
+    sampling:
+      probability: 1.0 # 100% sampling for test/development
+    propagation:
+      type: W3C # W3C Trace Context (traceparent, tracestate)
+    baggage:
+      correlation:
+        enabled: true
+        fields:
+          - merchant-id
+          - customer-tier
+      remote-fields:
+        - merchant-id
+        - customer-tier
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
