@@ -39,7 +39,7 @@ Spring Boot Application
 | **[07](docs/module-07-spring-transactions.md)** | **Spring Transactions & Isolation Hazards** | Data & Tx Engine | Advanced | ✅ Complete |
 | **[08](docs/module-08-jpa-hibernate-bottlenecks.md)** | **JPA & Hibernate Production Bottlenecks** | ORM / Persistence | Advanced | ✅ Complete |
 | **[09](docs/module-09-hikaricp-connection-pool-exhaustion.md)** | **Database & HikariCP Connection Pool Exhaustion** | Infrastructure / DB | Advanced | ✅ Complete |
-| **10** | **Database Performance, Query Plans & Deadlocks** | Database Internals | Expert | ⬜ Planned |
+| **[10](docs/module-10-database-performance-query-plans-deadlocks.md)** | **Database Performance, Query Plans & Deadlocks** | Database Internals | Expert | ✅ Complete |
 | **11** | **Spring Security, JWT & Filter Chain Breakages** | Security / Auth | Advanced | ⬜ Planned |
 | **12** | **External API Timeouts, Retries & Cascading Cascades** | Distributed Systems | Advanced | ⬜ Planned |
 | **13** | **JVM Threads, Async & Thread Pool Saturation** | Concurrency / JVM | Expert | ⬜ Planned |
