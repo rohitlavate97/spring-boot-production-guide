@@ -1,0 +1,98 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: payment-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,circuitbreakers,circuitbreakerevents,retries,retryevents,ratelimiters,bulkheads
+  endpoint:
+    health:
+      show-details: always
+    circuitbreakers:
+      enabled: true
+    circuitbreakerevents:
+      enabled: true
+    retries:
+      enabled: true
+    ratelimiters:
+      enabled: true
+    bulkheads:
+      enabled: true
+  health:
+    circuitbreakers:
+      enabled: true
+    ratelimiters:
+      enabled: true
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50.0
+        slowCallRateThreshold: 50.0
+        slowCallDurationThreshold: 2000ms
+        waitDurationInOpenState: 5000ms
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        recordExceptions:
+          - com.finflow.chapter340.exception.GatewayTimeoutException
+          - com.finflow.chapter340.exception.GatewayServiceUnavailableException
+          - java.io.IOException
+          - java.util.concurrent.TimeoutException
+        ignoreExceptions:
+          - com.finflow.chapter340.exception.PaymentValidationException
+    instances:
+      stripeGateway:
+        baseConfig: default
+  retry:
+    configs:
+      default:
+        maxAttempts: 3
+        waitDuration: 100ms
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+        retryExceptions:
+          - com.finflow.chapter340.exception.GatewayTimeoutException
+          - com.finflow.chapter340.exception.GatewayServiceUnavailableException
+          - java.io.IOException
+        ignoreExceptions:
+          - com.finflow.chapter340.exception.PaymentValidationException
+    instances:
+      stripeGateway:
+        baseConfig: default
+  ratelimiter:
+    configs:
+      default:
+        limitForPeriod: 50
+        limitRefreshPeriod: 1s
+        timeoutDuration: 20ms
+    instances:
+      stripeGateway:
+        limitForPeriod: 10
+        limitRefreshPeriod: 1s
+        timeoutDuration: 50ms
+  bulkhead:
+    configs:
+      default:
+        maxConcurrentCalls: 10
+        maxWaitDuration: 20ms
+    instances:
+      stripeGateway:
+        maxConcurrentCalls: 5
+        maxWaitDuration: 10ms
+  timelimiter:
+    configs:
+      default:
+        timeoutDuration: 3000ms
+        cancelRunningFuture: true
+    instances:
+      stripeGateway:
+        baseConfig: default
