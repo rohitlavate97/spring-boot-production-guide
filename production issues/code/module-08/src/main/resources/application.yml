@@ -1,0 +1,30 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: jpa-hibernate-troubleshooting-lab
+  datasource:
+    url: jdbc:h2:mem:finflow_jpa_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false # CRITICAL: Disables Open-Session-In-View anti-pattern to expose LazyInit traps at service boundary
+    show-sql: false
+    properties:
+      hibernate:
+        default_batch_fetch_size: 30
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
