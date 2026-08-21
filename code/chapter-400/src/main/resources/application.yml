@@ -1,0 +1,29 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  application:
+    name: release-engineering-service
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+    prometheus:
+      enabled: true
+
+finflow:
+  deployment:
+    version: "v3.0.0"
+    environment: "production"
+    strategy: "CANARY_PROGRESSIVE"
+    commit-sha: "7ef89ad"
