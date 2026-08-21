@@ -1,0 +1,16 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: rest-mvc-troubleshooting-lab
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+      read-unknown-enum-values-as-null: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
