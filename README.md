@@ -27,7 +27,7 @@ Full architectural topology, database schemas, failure domains, and infrastructu
 
 ## 📊 Curriculum & Progress Tracker
 
-**Progress:** `33 / 40` Chapters Completed
+**Progress:** `34 / 40` Chapters Completed
 
 Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](docs/HANDBOOK.md).
 
@@ -66,7 +66,7 @@ Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](d
 | | [310](docs/chapters/310-kubernetes-for-spring-boot.md) | Kubernetes — Probes, Graceful Shutdown, PDB, HPA, Rolling Deployments | ✅ Complete |
 | **Part XIII — Metrics** | [320](docs/chapters/320-micrometer-prometheus-grafana.md) | Micrometer, Prometheus & Grafana — Custom Metrics, Dashboards, Alerting | ✅ Complete |
 | | [330](docs/chapters/330-opentelemetry-distributed-tracing.md) | OpenTelemetry & Distributed Tracing — W3C Propagation, MDC Correlation | ✅ Complete |
-| **Part XIV — Resilience** | [340](docs/chapters/340-resilience4j-circuit-breaker-rate-limiting.md) | Resilience4j — Circuit Breaker, Retry, Rate Limiter, Bulkhead | ⬜ Not Started |
+| **Part XIV — Resilience** | [340](docs/chapters/340-resilience4j-circuit-breaker-rate-limiting.md) | Resilience4j — Circuit Breaker, Retry, Rate Limiter, Bulkhead | ✅ Complete |
 | | [350](docs/chapters/350-api-gateway-spring-cloud-gateway.md) | API Gateway — Spring Cloud Gateway, Route Predicates, Filters, Rate Limits | ⬜ Not Started |
 | | [360](docs/chapters/360-spring-cloud-config-eureka.md) | Spring Cloud Config & Service Discovery — Config Server, Eureka | ⬜ Not Started |
 | **Part XV — Distributed** | [370](docs/chapters/370-distributed-transactions.md) | Distributed Transactions — Saga Pattern, Outbox Pattern, Choreography | ⬜ Not Started |
