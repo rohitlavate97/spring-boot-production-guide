@@ -1,0 +1,14 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: aop-proxy-troubleshooting-lab
+  aop:
+    proxy-target-class: true # CGLIB proxying (Spring Boot default)
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
