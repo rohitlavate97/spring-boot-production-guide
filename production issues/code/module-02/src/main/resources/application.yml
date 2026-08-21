@@ -1,0 +1,23 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: config-troubleshooting-lab
+
+finflow:
+  core:
+    gateway-url: "https://api-dev.finflow.com/v1"
+    timeout-ms: 5000
+    max-retries: 3
+    api-key: "dev-mock-secret-key-123"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env,metrics
+  endpoint:
+    env:
+      show-values: when_authorized
+      roles: ADMIN
