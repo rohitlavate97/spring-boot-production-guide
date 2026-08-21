@@ -1,0 +1,31 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: hikaricp-troubleshooting-lab
+  datasource:
+    url: jdbc:h2:mem:finflow_hikaricp_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+    hikari:
+      pool-name: FinFlowHikariPool
+      maximum-pool-size: 3 # Intentionally constrained to 3 for starvation testing
+      minimum-idle: 1
+      connection-timeout: 2000 # 2 seconds timeout to fail-fast on starvation
+      idle-timeout: 30000
+      max-lifetime: 60000
+      leak-detection-threshold: 2000 # 2 seconds threshold to log stack trace of unclosed connection
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+    show-sql: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
