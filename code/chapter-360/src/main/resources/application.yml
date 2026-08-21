@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: payment-service
+  cloud:
+    config:
+      enabled: false # Standalone demonstration mode with @ConfigurationProperties and dynamic refresh
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env,refresh,configprops
+  endpoint:
+    health:
+      show-details: always
+    env:
+      show-values: always
+
+finflow:
+  payment:
+    transaction-fee-percent: 2.5
+    fixed-fee-cents: 30
+    instant-settlement-enabled: true
+    max-daily-volume: 1000000.00
+    partner-gateway-url: https://api.stripe-mock.finflow.internal/v1
+    environment-tier: PRODUCTION
