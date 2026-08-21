@@ -32,7 +32,7 @@ Spring Boot Application
 | **[00](docs/00-program-architecture.md)** | **Program Architecture & Tooling Matrix** | Foundation | All Levels | ✅ Complete |
 | **[01](docs/module-01-startup-failures.md)** | **Startup & ApplicationContext Failures** | Spring Core / IoC | Intermediate | ✅ Complete |
 | **[02](docs/module-02-configuration-problems.md)** | **Configuration & Environment Drift** | Config / Cloud / K8s | Intermediate | ✅ Complete |
-| **03** | **Maven, Gradle, Java & Dependency Conflicts** | Build & JVM Runtime | Intermediate | ⬜ Planned |
+| **[03](docs/module-03-dependency-problems.md)** | **Maven, Gradle, Java & Dependency Conflicts** | Build & JVM Runtime | Intermediate | ✅ Complete |
 | **04** | **REST, MVC, HTTP & API Network Errors (4xx/5xx)** | Web Layer / Gateway | Intermediate | ⬜ Planned |
 | **05** | **Validation & Global Exception Handling** | Web / Security | Intermediate | ⬜ Planned |
 | **06** | **Spring AOP & Proxy Traps (Self-Invocation, Aspects)** | Spring Core / AOP | Advanced | ⬜ Planned |
