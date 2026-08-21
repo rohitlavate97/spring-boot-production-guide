@@ -1,0 +1,36 @@
+server:
+  port: 8092
+
+spring:
+  application:
+    name: external-api-timeouts-resilience-lab
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,circuitbreakers,circuitbreakerevents
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      creditAssessmentService:
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 5
+        minimumNumberOfCalls: 3
+        failureRateThreshold: 50.0
+        waitDurationInOpenState: 1000ms
+        permittedNumberOfCallsInHalfOpenState: 2
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+  retry:
+    instances:
+      creditAssessmentService:
+        maxAttempts: 3
+        waitDuration: 50ms
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2.0
+  bulkhead:
+    instances:
+      creditAssessmentService:
+        maxConcurrentCalls: 2
+        maxWaitDuration: 10ms
