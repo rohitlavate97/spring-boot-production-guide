@@ -1,0 +1,88 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        # Route 1: Payment Service
+        - id: payment-service-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/v1/payments/**
+            - Method=GET,POST,PUT
+          filters:
+            - AddRequestHeader=X-Gateway-Forwarded, FinFlow-Edge-Gateway
+            - AddResponseHeader=X-Gateway-Response-Time, 2026-08-21T00:00:00Z
+            - name: EdgeRateLimiter
+              args:
+                tokensPerSecond: 10
+                burstCapacity: 20
+            - name: CircuitBreaker
+              args:
+                name: paymentCircuitBreaker
+                fallbackUri: forward:/fallback/payments
+
+        # Route 2: Order Service
+        - id: order-service-route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/v1/orders/**
+            - Method=GET,POST,PUT,DELETE
+          filters:
+            - AddRequestHeader=X-Gateway-Forwarded, FinFlow-Edge-Gateway
+            - name: EdgeRateLimiter
+              args:
+                tokensPerSecond: 15
+                burstCapacity: 30
+            - name: CircuitBreaker
+              args:
+                name: orderCircuitBreaker
+                fallbackUri: forward:/fallback/orders
+
+        # Route 3: Ledger Service
+        - id: ledger-service-route
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/v1/ledger/**
+            - Method=GET,POST
+          filters:
+            - AddRequestHeader=X-Gateway-Forwarded, FinFlow-Edge-Gateway
+            - name: CircuitBreaker
+              args:
+                name: ledgerCircuitBreaker
+                fallbackUri: forward:/fallback/ledger
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,gateway,circuitbreakers
+  endpoint:
+    gateway:
+      enabled: true
+    health:
+      show-details: always
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50.0
+        waitDurationInOpenState: 5000ms
+        permittedNumberOfCallsInHalfOpenState: 3
+    instances:
+      paymentCircuitBreaker:
+        baseConfig: default
+      orderCircuitBreaker:
+        baseConfig: default
+      ledgerCircuitBreaker:
+        baseConfig: default
+  timelimiter:
+    configs:
+      default:
+        timeoutDuration: 3000ms
