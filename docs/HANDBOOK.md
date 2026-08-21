@@ -115,7 +115,7 @@
 |---------|-------|--------|
 | [340](chapters/340-resilience4j-circuit-breaker-rate-limiting.md) | Resilience4j — Circuit Breaker, Retry, Rate Limiter, Bulkhead, TimeLimiter | ✅ Complete |
 | [350](chapters/350-api-gateway-spring-cloud-gateway.md) | API Gateway — Spring Cloud Gateway, Route Predicates, Filters, Rate Limiting at the Edge | ✅ Complete |
-| [360](chapters/360-spring-cloud-config-eureka.md) | Spring Cloud Config & Service Discovery — Config Server, Eureka, Client-Side Load Balancing | ⬜ Not Started |
+| [360](chapters/360-spring-cloud-config-eureka.md) | Spring Cloud Config & Service Discovery — Config Server, Eureka, Client-Side Load Balancing | ✅ Complete |
 
 ### Part XV — Distributed Systems
 
@@ -135,7 +135,7 @@
 
 ## Chapter Count: 40
 
-## Progress: 35 / 40 chapters completed
+## Progress: 36 / 40 chapters completed
 
 ---
 
