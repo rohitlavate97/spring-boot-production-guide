@@ -35,7 +35,7 @@ Spring Boot Application
 | **[03](docs/module-03-dependency-problems.md)** | **Maven, Gradle, Java & Dependency Conflicts** | Build & JVM Runtime | Intermediate | ✅ Complete |
 | **[04](docs/module-04-rest-mvc-http-problems.md)** | **REST, MVC, HTTP & API Network Errors (4xx/5xx)** | Web Layer / Gateway | Intermediate | ✅ Complete |
 | **[05](docs/module-05-validation-exception-handling.md)** | **Validation & Global Exception Handling** | Web / Security | Intermediate | ✅ Complete |
-| **06** | **Spring AOP & Proxy Traps (Self-Invocation, Aspects)** | Spring Core / AOP | Advanced | ⬜ Planned |
+| **[06](docs/module-06-aop-proxy-problems.md)** | **Spring AOP & Proxy Traps (Self-Invocation, Aspects)** | Spring Core / AOP | Advanced | ✅ Complete |
 | **07** | **Spring Transactions & Isolation Hazards** | Data & Tx Engine | Advanced | ⬜ Planned |
 | **08** | **JPA & Hibernate Production Bottlenecks** | ORM / Persistence | Advanced | ⬜ Planned |
 | **09** | **Database & HikariCP Connection Pool Exhaustion** | Infrastructure / DB | Advanced | ⬜ Planned |
