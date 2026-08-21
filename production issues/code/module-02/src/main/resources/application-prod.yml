@@ -1,0 +1,6 @@
+finflow:
+  core:
+    gateway-url: "https://api-prod.finflow.com/v1"
+    timeout-ms: 2500
+    max-retries: 2
+    api-key: "${PROD_API_KEY:vault-prod-default-key}"
