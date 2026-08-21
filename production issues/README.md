@@ -41,7 +41,7 @@ Spring Boot Application
 | **[09](docs/module-09-hikaricp-connection-pool-exhaustion.md)** | **Database & HikariCP Connection Pool Exhaustion** | Infrastructure / DB | Advanced | ✅ Complete |
 | **[10](docs/module-10-database-performance-query-plans-deadlocks.md)** | **Database Performance, Query Plans & Deadlocks** | Database Internals | Expert | ✅ Complete |
 | **[11](docs/module-11-spring-security-jwt-filter-chain.md)** | **Spring Security, JWT & Filter Chain Breakages** | Security / Auth | Advanced | ✅ Complete |
-| **12** | **External API Timeouts, Retries & Cascading Cascades** | Distributed Systems | Advanced | ⬜ Planned |
+| **[12](docs/module-12-external-api-timeouts-circuit-breakers.md)** | **External API Timeouts, Retries & Cascading Cascades** | Distributed Systems | Advanced | ✅ Complete |
 | **13** | **JVM Threads, Async & Thread Pool Saturation** | Concurrency / JVM | Expert | ⬜ Planned |
 | **14** | **JVM Memory Leaks, Metaspace, GC Thrashing & OOM** | JVM Performance | Expert | ⬜ Planned |
 | **15** | **Logging, Observability, MDC & Tracing Gaps** | Observability / SRE | Advanced | ⬜ Planned |
