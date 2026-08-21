@@ -128,14 +128,14 @@
 | Chapter | Topic | Status |
 |---------|-------|--------|
 | [380](chapters/380-observability-in-production.md) | Observability in Production — Log Aggregation, Alerting Pipelines, Runbooks, On-Call Workflows | ✅ Complete |
-| [390](chapters/390-performance-tuning.md) | Performance Tuning — Profiling, JFR, Flame Graphs, Query Optimization, Connection Tuning, GC Tuning | ⬜ Not Started |
+| [390](chapters/390-performance-tuning.md) | Performance Tuning — Profiling, JFR, Flame Graphs, Query Optimization, Connection Tuning, GC Tuning | ✅ Complete |
 | [400](chapters/400-production-deployment.md) | Production Deployment — CI/CD, Blue-Green, Canary, Feature Flags, Release Engineering | ⬜ Not Started |
 
 ---
 
 ## Chapter Count: 40
 
-## Progress: 38 / 40 chapters completed
+## Progress: 39 / 40 chapters completed
 
 ---
 

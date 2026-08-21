@@ -27,7 +27,7 @@ Full architectural topology, database schemas, failure domains, and infrastructu
 
 ## 📊 Curriculum & Progress Tracker
 
-**Progress:** `38 / 40` Chapters Completed
+**Progress:** `39 / 40` Chapters Completed
 
 Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](docs/HANDBOOK.md).
 
@@ -71,7 +71,7 @@ Detailed Table of Contents and status are maintained in [**docs/HANDBOOK.md**](d
 | | [360](docs/chapters/360-spring-cloud-config-eureka.md) | Spring Cloud Config & Service Discovery — Config Server, Eureka | ✅ Complete |
 | **Part XV — Distributed** | [370](docs/chapters/370-distributed-transactions.md) | Distributed Transactions — Saga Pattern, Outbox Pattern, Choreography | ✅ Complete |
 | **Part XVI — Production** | [380](docs/chapters/380-observability-in-production.md) | Observability in Production — Log Aggregation, Runbooks, On-Call Workflows | ✅ Complete |
-| | [390](docs/chapters/390-performance-tuning.md) | Performance Tuning — Profiling, JFR, Flame Graphs, Query Tuning, GC Tuning | ⬜ Not Started |
+| | [390](docs/chapters/390-performance-tuning.md) | Performance Tuning — Profiling, JFR, Flame Graphs, Query Tuning, GC Tuning | ✅ Complete |
 | | [400](docs/chapters/400-production-deployment.md) | Production Deployment — CI/CD Pipelines, Blue-Green, Canary, Feature Flags | ⬜ Not Started |
 
 ---
