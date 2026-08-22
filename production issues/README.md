@@ -52,7 +52,7 @@ Spring Boot Application
 | **[20](docs/module-20-apache-kafka-consumer-lag-poison-pills-rebalances.md)** | **Apache Kafka: Consumer Lag, Poison Pills & Rebalances** | Messaging / Kafka | Expert | ✅ Complete |
 | **[21](docs/module-21-concurrency-race-conditions-distributed-locks.md)** | **Concurrency, Race Conditions & Distributed Locks** | Concurrency / Data | Expert | ✅ Complete |
 | **[22](docs/module-22-scheduled-jobs-overlaps-cluster-duplication.md)** | **Scheduled Jobs, Job Overlaps & Cluster Duplication** | Scheduling / Async | Intermediate | ✅ Complete |
-| **23** | **File Uploads, Storage Leaks & Ephemeral Containers** | Web & Storage | Intermediate | ⬜ Planned |
+| **[23](docs/module-23-file-uploads-storage-leaks-ephemeral-containers.md)** | **File Uploads, Storage Leaks & Ephemeral Containers** | Web & Storage | Intermediate | ✅ Complete |
 | **24** | **Timezones, DST, Instant vs LocalDateTime & Clock Skew**| Core Runtime | Intermediate | ⬜ Planned |
 | **25** | **Database Migrations: Flyway, Locks & Zero-Downtime** | Database DevOps | Advanced | ⬜ Planned |
 | **26** | **Deployment Failures: Rolling, Blue-Green & Canary** | Release Engineering | Advanced | ⬜ Planned |

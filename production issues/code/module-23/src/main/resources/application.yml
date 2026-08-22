@@ -1,0 +1,27 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  application:
+    name: module-23-file-uploads-storage-leaks-ephemeral-containers
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 25MB
+      max-request-size: 30MB
+      file-size-threshold: 2MB
+
+finflow:
+  storage:
+    temp-dir: ./target/finflow-uploads-tmp
+    max-file-age-minutes: 60
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
