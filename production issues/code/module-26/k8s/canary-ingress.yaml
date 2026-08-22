@@ -1,0 +1,44 @@
+# Nginx Ingress Controller - Production Canary Configuration with Cookie Affinity
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: finflow-banking-primary-ingress
+  namespace: production
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: api.finflow.internal
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: finflow-banking-v1-service
+                port:
+                  number: 8080
+---
+# Canary Ingress (Routes 10% of traffic with sticky cookie affinity)
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: finflow-banking-canary-ingress
+  namespace: production
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "10"
+    # Essential: Binds user session so sub-requests don't hop randomly between v1 and v2!
+    nginx.ingress.kubernetes.io/canary-by-cookie: "canary_affinity"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: api.finflow.internal
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: finflow-banking-v2-canary-service
+                port:
+                  number: 8080

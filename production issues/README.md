@@ -55,7 +55,7 @@ Spring Boot Application
 | **[23](docs/module-23-file-uploads-storage-leaks-ephemeral-containers.md)** | **File Uploads, Storage Leaks & Ephemeral Containers** | Web & Storage | Intermediate | ✅ Complete |
 | **[24](docs/module-24-timezones-dst-instant-localdatetime-clock-skew.md)** | **Timezones, DST, Instant vs LocalDateTime & Clock Skew**| Core Runtime | Intermediate | ✅ Complete |
 | **[25](docs/module-25-database-migrations-flyway-locks-zero-downtime.md)** | **Database Migrations: Flyway, Locks & Zero-Downtime** | Database DevOps | Advanced | ✅ Complete |
-| **26** | **Deployment Failures: Rolling, Blue-Green & Canary** | Release Engineering | Advanced | ⬜ Planned |
+| **[26](docs/module-26-deployment-failures-rolling-blue-green-canary.md)** | **Deployment Failures: Rolling, Blue-Green & Canary** | Release Engineering | Advanced | ✅ Complete |
 | **27** | **Distributed Microservice Failure & Sagas** | Distributed Systems | Expert | ⬜ Planned |
 | **28** | **Production Incident Response (20 Comprehensive Scenarios)**| Incident Command | Expert | ⬜ Planned |
 
