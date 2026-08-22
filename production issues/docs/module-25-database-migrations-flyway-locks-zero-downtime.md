@@ -147,6 +147,7 @@ ORDER BY installed_rank DESC;
 ```text
 Step 1: Inspect pg_locks for Blocking AccessExclusiveLock.
         If DDL is blocking live production traffic, terminate the DDL process PID (`SELECT pg_terminate_backend(PID)`).
+        (⚠️ Do not run blindly in production: terminating a backend query aborts the transaction immediately).
 
 Step 2: Enforce Expand & Contract Pattern for All Schema Changes.
         Never rename or drop columns in a single release. Follow Expand -> Backfill -> Switch -> Contract.

@@ -143,7 +143,7 @@ WHERE state != 'idle' AND query LIKE '%exchange_rates%'
 ORDER BY query_start ASC;
 ```
 
-#### Method 3: Monitor Real-Time Redis Commands
+#### Method 3: Monitor Real-Time Redis Commands (⚠️ Do not run blindly in production: MONITOR degrades Redis throughput by up to 50%)
 ```bash
 redis-cli monitor | grep -E "fx:USD_EUR"
 ```

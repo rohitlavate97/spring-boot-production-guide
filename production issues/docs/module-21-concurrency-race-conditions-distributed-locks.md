@@ -148,7 +148,7 @@ JOIN pg_catalog.pg_stat_activity blocking_activity ON blocking_activity.pid = bl
 WHERE NOT blocked_locks.granted;
 ```
 
-#### Method 2: Audit Redis Lock Operations via Monitor
+#### Method 2: Audit Redis Lock Operations via Monitor (⚠️ Do not run blindly in production: MONITOR degrades Redis throughput by up to 50%)
 ```bash
 redis-cli monitor | grep -E "SET lock|DEL lock"
 ```
