@@ -57,7 +57,7 @@ Spring Boot Application
 | **[25](docs/module-25-database-migrations-flyway-locks-zero-downtime.md)** | **Database Migrations: Flyway, Locks & Zero-Downtime** | Database DevOps | Advanced | ✅ Complete |
 | **[26](docs/module-26-deployment-failures-rolling-blue-green-canary.md)** | **Deployment Failures: Rolling, Blue-Green & Canary** | Release Engineering | Advanced | ✅ Complete |
 | **[27](docs/module-27-distributed-microservice-failure-sagas.md)** | **Distributed Microservice Failure & Sagas** | Distributed Systems | Expert | ✅ Complete |
-| **28** | **Production Incident Response (20 Comprehensive Scenarios)**| Incident Command | Expert | ⬜ Planned |
+| **[28](docs/module-28-production-incident-response-scenarios.md)** | **Production Incident Response (20 Comprehensive Scenarios)**| Incident Command | Expert | ✅ Complete |
 
 ---
 
