@@ -51,7 +51,7 @@ Spring Boot Application
 | **[19](docs/module-19-redis-caching-stampede-avalanche-invalidation.md)** | **Redis Caching: Stampede, Avalanche & Invalidation** | Distributed Cache | Advanced | ✅ Complete |
 | **[20](docs/module-20-apache-kafka-consumer-lag-poison-pills-rebalances.md)** | **Apache Kafka: Consumer Lag, Poison Pills & Rebalances** | Messaging / Kafka | Expert | ✅ Complete |
 | **[21](docs/module-21-concurrency-race-conditions-distributed-locks.md)** | **Concurrency, Race Conditions & Distributed Locks** | Concurrency / Data | Expert | ✅ Complete |
-| **22** | **Scheduled Jobs, Job Overlaps & Cluster Duplication** | Scheduling / Async | Intermediate | ⬜ Planned |
+| **[22](docs/module-22-scheduled-jobs-overlaps-cluster-duplication.md)** | **Scheduled Jobs, Job Overlaps & Cluster Duplication** | Scheduling / Async | Intermediate | ✅ Complete |
 | **23** | **File Uploads, Storage Leaks & Ephemeral Containers** | Web & Storage | Intermediate | ⬜ Planned |
 | **24** | **Timezones, DST, Instant vs LocalDateTime & Clock Skew**| Core Runtime | Intermediate | ⬜ Planned |
 | **25** | **Database Migrations: Flyway, Locks & Zero-Downtime** | Database DevOps | Advanced | ⬜ Planned |

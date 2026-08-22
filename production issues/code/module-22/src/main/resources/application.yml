@@ -1,0 +1,28 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  application:
+    name: module-22-scheduled-jobs-overlaps-cluster-duplication
+  task:
+    scheduling:
+      # ------------------------------------------------------------------------
+      # TaskScheduler Thread Pool Configuration:
+      # Eliminates single-threaded starvation (default pool size is only 1!)
+      # ------------------------------------------------------------------------
+      pool:
+        size: 8
+      thread-name-prefix: "finflow-scheduler-"
+      shutdown:
+        await-termination: true
+        await-termination-period: 20s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
