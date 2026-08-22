@@ -72,7 +72,7 @@ In an enterprise fintech ecosystem processing **$2.5B in daily transactions acro
 
 ---
 
-### 4. The 20 Comprehensive Production Incident Playbooks
+### 4. Catalog of 20 Enterprise Incident Playbooks
 
 ```text
 ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -80,7 +80,7 @@ In an enterprise fintech ecosystem processing **$2.5B in daily transactions acro
 ├────┬─────────────────────────────────────────────────┬──────────┬───────────────────────────────┤
 │ ID │ Incident Scenario Title                         │ Severity │ Failure Domain / Module Ref   │
 ├────┼─────────────────────────────────────────────────┼──────────┼───────────────────────────────┤
-│ 01 │ JVM Native Memory Leak & Glibc Fragmentation    │ SEV-1    │ JVM Memory (Module 01)        │
+│ 01 │ JVM Native Memory Leak & Glibc Fragmentation    │ SEV-1    │ JVM Memory (Module 01/14)     │
 │ 02 │ PostgreSQL AccessExclusiveLock Pool Exhaustion  │ SEV-1    │ Database Locks (Module 25)    │
 │ 03 │ Kafka Consumer Lag Rebalance Death Spiral       │ SEV-1    │ Kafka Streaming (Module 20)   │
 │ 04 │ Redis Cache Stampede & Distributed Mutex Herd   │ SEV-1    │ Redis Caching (Module 19)     │
@@ -98,49 +98,321 @@ In an enterprise fintech ecosystem processing **$2.5B in daily transactions acro
 │ 16 │ RabbitMQ Memory Alarm & Unacked Message Flood   │ SEV-1    │ Messaging (Module 16)         │
 │ 17 │ Microservice Cascading Thread Pool Exhaustion   │ SEV-1    │ Resilience (Module 12)        │
 │ 18 │ CPU 100% via Regex Catastrophic Backtracking    │ SEV-1    │ Core Runtime (Module 02)      │
-│ 19 │ Kubernetes Readiness Probe Flapping Blackout    │ SEV-1    │ Kubernetes (Module 14)        │
+│ 19 │ Kubernetes Readiness Probe Flapping Blackout    │ SEV-1    │ Kubernetes (Module 14/17)     │
 │ 20 │ Out-of-Order Kafka Consumption Ledger Corruption│ SEV-1    │ Kafka Streaming (Module 20)   │
 └────┴─────────────────────────────────────────────────┴──────────┴───────────────────────────────┘
 ```
 
 ---
 
-### 5. Detailed Runbook Deep-Dive for Key Incident Archetypes
+### 5. Detailed Technical Runbooks for All 20 Incident Scenarios
 
-#### Playbook 01: JVM Native Memory Leak & Glibc Arena Fragmentation
-- **Root Cause:** Glibc `malloc` creates up to $8 \times \text{CPU cores}$ memory arenas. High thread turnover causes extreme C-heap memory fragmentation, triggering Linux `OOMKiller` while JVM Heap remains $<50\%$ utilized.
-- **Immediate Mitigation:**
+---
+
+#### 🔴 Playbook 01: JVM Native Memory Leak & Glibc Arena Fragmentation
+- **Severity:** `SEV-1` | **Domain:** `JVM Memory / C-Heap`
+- **Symptoms:** Kubernetes pod OOMKilled (`Exit Code 137`); JVM heap metrics report $<50\%$ memory utilization, but container Resident Set Size (RSS) steadily breaches cgroup limits.
+- **Diagnostic Command:**
   ```bash
-  # Inject environment variable to cap glibc arenas to 2
-  kubectl set env deployment/finflow-clearing MALLOC_ARENA_MAX=2
+  # Check native memory tracking breakdown
+  jcmd <PID> VM.native_memory detail.diff
   ```
-- **Permanent Remediation:** Switch Docker base image to `jemalloc` (`LD_PRELOAD=/usr/lib/libjemalloc.so`) and configure Native Memory Tracking (`-XX:NativeMemoryTracking=detail`).
-
-#### Playbook 02: PostgreSQL AccessExclusiveLock Cascading Pool Exhaustion
-- **Root Cause:** `ALTER TABLE accounts ADD COLUMN tier VARCHAR NOT NULL DEFAULT 'STD'` without `lock_timeout` queued behind a slow analytical query, blocking all subsequent `SELECT` and `UPDATE` statements.
+- **Root Cause:** Glibc's default memory allocator creates up to $8 \times \text{cores}$ memory arenas. Rapid thread creation and destruction results in severe C-heap fragmentation.
 - **Immediate Mitigation:**
+  > [!WARNING]
+  > ⚠️ Do not run blindly in production: Injecting environment variables triggers a rolling restart of all pods.
+  ```bash
+  kubectl set env deployment/finflow-payments MALLOC_ARENA_MAX=2
+  ```
+- **Permanent Remediation:** Switch container base image to `jemalloc` (`LD_PRELOAD=/usr/lib/libjemalloc.so`) and configure fixed thread pools.
+
+---
+
+#### 🔴 Playbook 02: PostgreSQL AccessExclusiveLock Cascading Pool Exhaustion
+- **Severity:** `SEV-1` | **Domain:** `Database Internals / Connection Pools`
+- **Symptoms:** HikariCP connection pool exhausted in $<3\text{s}$ (`Connection is not available, request timed out after 30000ms`); 100% of API endpoints timeout with 500 errors.
+- **Diagnostic Command:**
   ```sql
-  -- Identify and terminate the blocking DDL or query immediately
-  SELECT pg_terminate_backend(blocking_locks.pid)
+  SELECT blocked_locks.pid AS blocked_pid, blocking_locks.pid AS blocking_pid, 
+         blocked_activity.query AS blocked_query, blocking_activity.query AS blocking_query
   FROM pg_catalog.pg_locks blocked_locks
   JOIN pg_catalog.pg_locks blocking_locks ON blocking_locks.relation = blocked_locks.relation
+  JOIN pg_catalog.pg_stat_activity blocked_activity ON blocked_activity.pid = blocked_locks.pid
+  JOIN pg_catalog.pg_stat_activity blocking_activity ON blocking_activity.pid = blocking_locks.pid
   WHERE NOT blocked_locks.granted;
   ```
-- **Permanent Remediation:** Enforce `SET lock_timeout = '2s';` in all Flyway migration scripts.
+- **Root Cause:** DDL `ALTER TABLE` executed without `lock_timeout` queued behind an analytical query, acquiring `AccessExclusiveLock` and blocking all subsequent `SELECT` and `UPDATE` traffic.
+- **Immediate Mitigation:**
+  > [!WARNING]
+  > ⚠️ Do not run blindly in production: Terminating a backend query aborts that transaction immediately.
+  ```sql
+  SELECT pg_terminate_backend(<BLOCKING_PID>);
+  ```
+- **Permanent Remediation:** Enforce `SET lock_timeout = '2s';` in all Flyway migrations and execute schema changes via the 4-phase Expand and Contract pattern.
 
-#### Playbook 03: Kafka Consumer Lag Rebalance Death Spiral
-- **Root Cause:** Batch processing time exceeded `max.poll.interval.ms` (300s). The broker marked the consumer dead and triggered group rebalance, halting all processing.
+---
+
+#### 🔴 Playbook 03: Kafka Consumer Lag Rebalance Death Spiral
+- **Severity:** `SEV-1` | **Domain:** `Messaging / Kafka`
+- **Symptoms:** Consumer group continuously rebalances; consumer lag grows exponentially; messages are processed repeatedly.
+- **Diagnostic Command:**
+  ```bash
+  kafka-consumer-groups.sh --bootstrap-server kafka:9092 --describe --group payments-group
+  ```
+- **Root Cause:** Downstream processing latency caused batch handling to exceed `max.poll.interval.ms` (300s). Broker marks consumer dead and triggers group rebalance, halting all processing.
 - **Immediate Mitigation:**
   ```bash
-  # Scale consumer pod replicas to distribute partition load
   kubectl scale deployment/kafka-consumer-payments --replicas=12
   ```
-- **Permanent Remediation:** Reduce `max.poll.records` to 100, increase `max.poll.interval.ms` to 600s, and switch to `CooperativeStickyAssignor`.
+- **Permanent Remediation:** Tune `max.poll.records=100`, increase `max.poll.interval.ms=600000`, and configure `CooperativeStickyAssignor`.
 
-#### Playbook 11: Distributed Partial Failure & Missing Saga Compensations
-- **Root Cause:** Synchronous REST calls across 4 microservices failed at Step 3 (FX provider 503). The process terminated without refunding the customer's debited $5,000.
+---
+
+#### 🔴 Playbook 04: Redis Cache Stampede & Distributed Mutex Thundering Herd
+- **Severity:** `SEV-1` | **Domain:** `Distributed Caching`
+- **Symptoms:** Hot cache key expires; thousands of concurrent threads query PostgreSQL simultaneously; database CPU spikes to 100%.
+- **Diagnostic Command:**
+  ```bash
+  redis-cli --latency-history
+  ```
+- **Root Cause:** Hard TTL expiration on high-traffic keys without probabilistic refresh or single-flight mutex locking.
+- **Immediate Mitigation:** Pre-warm the expired key manually via `redis-cli SET <KEY> <VALUE> EX 3600`.
+- **Permanent Remediation:** Implement XFetch Probabilistic Early Expiration algorithm and distributed mutex lock for cache misses.
+
+---
+
+#### 🟡 Playbook 05: Virtual Thread Carrier Pinning on Synchronized Blocks
+- **Severity:** `SEV-2` | **Domain:** `JVM Concurrency`
+- **Symptoms:** Virtual thread throughput collapses; carrier thread pool (`ForkJoinPool`) saturates during blocking database or network I/O.
+- **Diagnostic Command:**
+  ```bash
+  # Enable JDK virtual thread pinning trace
+  -Djdk.tracePinnedThreads=full
+  ```
+- **Root Cause:** Virtual threads executing blocking I/O inside `synchronized` blocks or native JNI calls pin the underlying OS carrier thread.
+- **Immediate Mitigation:** Scale out application pod replicas to increase available carrier pool capacity.
+- **Permanent Remediation:** Replace `synchronized` blocks with `java.util.concurrent.locks.ReentrantLock`.
+
+---
+
+#### 🔴 Playbook 06: SSL/TLS Certificate Expiry & Truststore Handshake Failures
+- **Severity:** `SEV-1` | **Domain:** `Networking / Security`
+- **Symptoms:** Outbound HTTPS requests to payment gateways fail with `SSLHandshakeException: PKIX path building failed: unable to find valid certification path`.
+- **Diagnostic Command:**
+  ```bash
+  openssl s_client -connect api.stripe.com:443 -showcerts
+  ```
+- **Root Cause:** Upstream payment provider rotated root/intermediate CA certificate; container JVM truststore (`cacerts`) lacks the new public cert.
+- **Immediate Mitigation:**
+  > [!WARNING]
+  > ⚠️ Do not run blindly in production: Overwriting truststores will fail if permissions are invalid.
+  ```bash
+  keytool -importcert -alias new-ca -keystore /etc/ssl/certs/java/cacerts -file ca.crt -storepass changeit -noprompt
+  kubectl rollout restart deployment/payment-gateway
+  ```
+- **Permanent Remediation:** Deploy automated cert-manager with 30-day proactive rotation alerts and reloadable SSL bundles.
+
+---
+
+#### 🔴 Playbook 07: Distributed Clock Skew (NTP Drift) & JWT Premature Invalidation
+- **Severity:** `SEV-1` | **Domain:** `Time & Security`
+- **Symptoms:** 100% of JWT authorization tokens rejected with `Token used before issued_at` or `Token expired` despite being generated milliseconds earlier.
+- **Diagnostic Command:**
+  ```bash
+  chronyc tracking
+  ```
+- **Root Cause:** Node 1 wall-clock drifted $>4\text{s}$ ahead of Node 2 due to NTP daemon desynchronization.
+- **Immediate Mitigation:** Restart `chronyd` on out-of-sync nodes: `systemctl restart chronyd`.
+- **Permanent Remediation:** Configure a $\pm 10\text{s}$ clock skew tolerance leeway window in JWT validator (`jwtVerifier.setAllowedClockSkewSeconds(10)`).
+
+---
+
+#### 🔴 Playbook 08: Rolling Deploy In-Memory Session Invalidation Storm
+- **Severity:** `SEV-1` | **Domain:** `Release Engineering`
+- **Symptoms:** 150,000 users logged out simultaneously during rolling deploy; 15x login surge crashes OAuth2 identity provider.
+- **Diagnostic Command:**
+  ```bash
+  kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx | grep -E "POST /oauth/token" | wc -l
+  ```
+- **Root Cause:** Application stored HTTP session state in local in-memory Tomcat heap; pod restarts destroyed active sessions.
+- **Immediate Mitigation:** Throttle login gateway rate limits to prevent identity provider total collapse.
+- **Permanent Remediation:** Migrate to stateless JWT authentication or Spring Session backed by distributed Redis.
+
+---
+
+#### 🟡 Playbook 09: Flyway Migration Lock Orphan & Rollout Stall
+- **Severity:** `SEV-2` | **Domain:** `Database DevOps`
+- **Symptoms:** Application pods stuck in `CrashLoopBackOff` with `Unable to obtain table lock for flyway_schema_history`.
+- **Diagnostic Command:**
+  ```sql
+  SELECT * FROM flyway_schema_history WHERE success = false OR installed_rank = (SELECT max(installed_rank) FROM flyway_schema_history);
+  ```
+- **Root Cause:** A pod executing migration was OOMKilled mid-run, leaving the lock table in an orphaned locked state.
+- **Immediate Mitigation:**
+  > [!WARNING]
+  > ⚠️ Do not run blindly in production: Ensure no other migration is actively writing data before running repair!
+  ```sql
+  -- Run flyway repair or unlock table
+  DELETE FROM flyway_schema_history WHERE success = false;
+  ```
+- **Permanent Remediation:** Move Flyway execution out of application pods into a single-replica Kubernetes Pre-Sync Job.
+
+---
+
+#### 🔴 Playbook 10: Zero-Downtime Column Rename Breaking Rolling Deployments
+- **Severity:** `SEV-1` | **Domain:** `Database DevOps`
+- **Symptoms:** 50% of production traffic fails with `PSQLException: column "account_number" does not exist`.
+- **Diagnostic Command:**
+  ```bash
+  kubectl logs -l app=finflow-banking | grep -i "column.*does not exist"
+  ```
+- **Root Cause:** Migration dropped or renamed column in a single step while older Version 1 pods were still serving traffic.
+- **Immediate Mitigation:** Immediately roll back frontend deployment and recreate a database view or alias column in PostgreSQL.
+- **Permanent Remediation:** Enforce 4-phase Expand and Contract pattern across independent software releases.
+
+---
+
+#### 🔴 Playbook 11: Distributed Partial Failure & Missing Saga Compensations
+- **Severity:** `SEV-1` | **Domain:** `Distributed Systems`
+- **Symptoms:** Customer account debited $5,000; FX conversion failed; order unfulfilled and money not refunded.
+- **Diagnostic Command:**
+  ```sql
+  SELECT * FROM saga_instances WHERE status = 'COMPENSATING' OR status = 'FAILED';
+  ```
+- **Root Cause:** Synchronous REST chain without a Saga Coordinator crashed mid-flow without executing compensating rollbacks.
 - **Immediate Mitigation:** Run manual ledger reconciliation script to credit customer wallet balances for orphaned orders.
 - **Permanent Remediation:** Implement `PaymentSagaOrchestrator` with automated reverse compensation (`Refund Wallet -> Cancel Order`).
+
+---
+
+#### 🔴 Playbook 12: Dual-Write Loss Between PostgreSQL and Kafka Outbox
+- **Severity:** `SEV-1` | **Domain:** `Data Consistency`
+- **Symptoms:** Orders exist in PostgreSQL database but were never published to Kafka fulfillment topics.
+- **Diagnostic Command:**
+  ```sql
+  SELECT count(*) FROM orders o WHERE NOT EXISTS (SELECT 1 FROM outbox_events e WHERE e.aggregate_id = o.id);
+  ```
+- **Root Cause:** Non-atomic dual-write (`save()` followed by `kafka.send()`); network partition caused Kafka send failure after DB commit.
+- **Immediate Mitigation:** Execute backfill reconciliation script to scan un-published records and dispatch events to Kafka.
+- **Permanent Remediation:** Implement Transactional Outbox Pattern to persist business entities and outbox events in a single ACID transaction.
+
+---
+
+#### 🔴 Playbook 13: DNS Resolution TTL Cache Caching Stale IP After Cloud Failover
+- **Severity:** `SEV-1` | **Domain:** `Core Networking`
+- **Symptoms:** Microservices fail to connect to database endpoint after AWS RDS multi-AZ failover (`Connection refused` / `UnknownHostException`).
+- **Diagnostic Command:**
+  ```bash
+  nslookup <DATABASE_HOST>
+  ```
+- **Root Cause:** JVM default `networkaddress.cache.ttl` is `-1` (cached forever), causing the JVM to query the stale primary IP.
+- **Immediate Mitigation:** Perform a rolling restart of all application pods to clear in-memory DNS cache.
+- **Permanent Remediation:** Set `networkaddress.cache.ttl=10` in `$JAVA_HOME/conf/security/java.security`.
+
+---
+
+#### 🟡 Playbook 14: Ephemeral Disk Space Exhaustion via Upload Temp Files
+- **Severity:** `SEV-2` | **Domain:** `Storage / Web`
+- **Symptoms:** Kubernetes pods evicted with `DiskPressure` / `No space left on device` during batch file processing.
+- **Diagnostic Command:**
+  ```bash
+  df -h /tmp
+  ls -lh /tmp | head -n 20
+  ```
+- **Root Cause:** Multipart file uploads created un-deleted temporary files on container local storage.
+- **Immediate Mitigation:**
+  ```bash
+  find /tmp -type f -name "upload_*" -mmin +60 -delete
+  ```
+- **Permanent Remediation:** Enforce streaming uploads (8KB chunks) and delete temp files in deterministic `try-finally` blocks.
+
+---
+
+#### 🟡 Playbook 15: ShedLock Distributed Job Overlap Under Network Partition
+- **Severity:** `SEV-2` | **Domain:** `Scheduling / Async`
+- **Symptoms:** Billing batch job executed simultaneously on two pods, double-billing 10,000 customers.
+- **Diagnostic Command:**
+  ```sql
+  SELECT * FROM shedlock WHERE name = 'BillingBatchJob';
+  ```
+- **Root Cause:** `lockAtLeastFor` was omitted or set to 0, allowing another pod to acquire the lock immediately during a clock jump.
+- **Immediate Mitigation:** Cancel duplicate batch jobs and issue credit refunds for double-billed accounts.
+- **Permanent Remediation:** Configure `lockAtLeastFor = "PT5M"` to absorb clock skew and `lockAtMostFor = "PT15M"` to guard against crashes.
+
+---
+
+#### 🔴 Playbook 16: RabbitMQ Memory Alarm Trigger & Unacked Message Flood
+- **Severity:** `SEV-1` | **Domain:** `Messaging`
+- **Symptoms:** RabbitMQ blocks all message publishers; API requests timeout with 504 Gateway Timeout.
+- **Diagnostic Command:**
+  ```bash
+  rabbitmqctl list_queues name messages_unacknowledged consumers memory
+  ```
+- **Root Cause:** Consumer swallowed exceptions without ACK/NACK; unacknowledged message backlog exceeded RabbitMQ memory threshold.
+- **Immediate Mitigation:**
+  > [!WARNING]
+  > ⚠️ Do not run blindly in production: Purging unacknowledged queues can drop messages if not backed up.
+  ```bash
+  kubectl scale deployment/rabbitmq-consumers --replicas=20
+  ```
+- **Permanent Remediation:** Configure strict `basicQos(100)` prefetch limits and Dead Letter Exchange routing.
+
+---
+
+#### 🔴 Playbook 17: Microservice Cascading Thread Pool Exhaustion
+- **Severity:** `SEV-1` | **Domain:** `Resilience`
+- **Symptoms:** Slow downstream fraud API (5s latency) exhausts Tomcat worker threads; unrelated payment APIs stop responding.
+- **Diagnostic Command:**
+  ```bash
+  jcmd <PID> Thread.print | grep -i "http-nio" | grep "TIMED_WAITING" | wc -l
+  ```
+- **Root Cause:** Lack of bulkhead isolation and timeout policies allowed a slow dependency to monopolize the global thread pool.
+- **Immediate Mitigation:** Enable circuit breaker fallback immediately via configuration toggle.
+- **Permanent Remediation:** Implement Resilience4j Bulkhead and CircuitBreaker with a strict 1.5s timeout.
+
+---
+
+#### 🔴 Playbook 18: CPU 100% via Regex Catastrophic Backtracking
+- **Severity:** `SEV-1` | **Domain:** `Core Runtime`
+- **Symptoms:** All container CPU cores spike to 100%; thread dump shows multiple threads stuck in `java.util.regex.Pattern$Loop.match`.
+- **Diagnostic Command:**
+  ```bash
+  top -H -p <PID>
+  jcmd <PID> Thread.print | grep -A 10 "Pattern.matcher"
+  ```
+- **Root Cause:** Flawed regular expression with nested quantifiers (e.g. `(a+)+$`) evaluated on crafted malicious user input.
+- **Immediate Mitigation:** Block malicious input pattern at Web Application Firewall (WAF) level.
+- **Permanent Remediation:** Refactor regex using possessive quantifiers (`++`) or atomic grouping, and enforce input length limits.
+
+---
+
+#### 🔴 Playbook 19: Kubernetes Readiness Probe Flapping Blackout
+- **Severity:** `SEV-1` | **Domain:** `Kubernetes`
+- **Symptoms:** All pods removed from Service endpoints simultaneously; API Gateway returns 503 Service Unavailable.
+- **Diagnostic Command:**
+  ```bash
+  kubectl describe service/finflow-api | grep -i "Endpoints"
+  ```
+- **Root Cause:** Readiness probe executed heavy SQL queries against the database; database slowdown caused all probes to fail concurrently.
+- **Immediate Mitigation:**
+  ```bash
+  # Temporarily relax probe timeout
+  kubectl patch deployment finflow-api -p '{"spec":{"template":{"spec":{"containers":[{"name":"api","readinessProbe":{"timeoutSeconds":10,"failureThreshold":5}}]}}}}'
+  ```
+- **Permanent Remediation:** Separate internal health probes (`/actuator/health/readiness`) from external infrastructure dependency checks.
+
+---
+
+#### 🔴 Playbook 20: Out-of-Order Kafka Consumption Ledger Corruption
+- **Severity:** `SEV-1` | **Domain:** `Kafka / Data Integrity`
+- **Symptoms:** Customer account balance negative; withdrawal event processed before initial deposit due to partition hopping.
+- **Diagnostic Command:**
+  ```sql
+  SELECT account_id, balance FROM accounts WHERE balance < 0;
+  ```
+- **Root Cause:** Producer published messages with null/random keys, distributing transactions for the same account across multiple partitions.
+- **Immediate Mitigation:** Freeze affected accounts and run chronological ledger replay rebuild.
+- **Permanent Remediation:** Enforce partition key hashing on `accountId` (`kafkaTemplate.send(topic, accountId, event)`).
 
 ---
 

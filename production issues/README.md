@@ -91,3 +91,16 @@ Every production incident follows a strict 14-step scientific protocol:
 - **Linux & Kernel:** `strace`, `lsof`, `tcpdump`, `netstat`/`ss`, `vmstat`, `iostat`, `top`/`htop`, `perf`.
 - **Containers & K8s:** `kubectl describe`, `kubectl logs`, `kubectl top`, cgroup metrics (`/sys/fs/cgroup`).
 - **Observability:** Prometheus, Grafana, OpenTelemetry, Jaeger, Tempo, Grafana Loki, Elasticsearch.
+
+---
+
+## 📚 Master Deliverables & Reference Guides
+
+- 📝 **[Master Answer Guide](docs/master-answer-guide.md)** — Comprehensive solutions & explanations for all 28 modules.
+- 🌳 **[Master Debugging Decision Tree](docs/debugging-decision-tree.md)** — Algorithmic triage flowchart for high-severity incidents.
+- 🔍 **[Symptom-Cause-Evidence Matrix](docs/symptom-cause-evidence-matrix.md)** — Cross-module incident lookup matrix.
+- 💻 **[Master Diagnostic Command Cheat Sheet](docs/command-cheat-sheet.md)** — JVM, Linux, PostgreSQL, Kafka, Redis & K8s commands.
+- 📊 **[Actuator & Observability Checklist](docs/actuator-observability-checklist.md)** — Metric, trace, and logging production standards.
+- 🛡️ **[Master Production Readiness Checklist](docs/production-readiness-checklist.md)** — 50-point pre-production verification audit.
+- 🎓 **[Final Comprehensive Assessment & Certification Exam](docs/final-assessment.md)** — 50-question master exam & scoring rubric.
+
