@@ -53,7 +53,7 @@ Spring Boot Application
 | **[21](docs/module-21-concurrency-race-conditions-distributed-locks.md)** | **Concurrency, Race Conditions & Distributed Locks** | Concurrency / Data | Expert | ✅ Complete |
 | **[22](docs/module-22-scheduled-jobs-overlaps-cluster-duplication.md)** | **Scheduled Jobs, Job Overlaps & Cluster Duplication** | Scheduling / Async | Intermediate | ✅ Complete |
 | **[23](docs/module-23-file-uploads-storage-leaks-ephemeral-containers.md)** | **File Uploads, Storage Leaks & Ephemeral Containers** | Web & Storage | Intermediate | ✅ Complete |
-| **24** | **Timezones, DST, Instant vs LocalDateTime & Clock Skew**| Core Runtime | Intermediate | ⬜ Planned |
+| **[24](docs/module-24-timezones-dst-instant-localdatetime-clock-skew.md)** | **Timezones, DST, Instant vs LocalDateTime & Clock Skew**| Core Runtime | Intermediate | ✅ Complete |
 | **25** | **Database Migrations: Flyway, Locks & Zero-Downtime** | Database DevOps | Advanced | ⬜ Planned |
 | **26** | **Deployment Failures: Rolling, Blue-Green & Canary** | Release Engineering | Advanced | ⬜ Planned |
 | **27** | **Distributed Microservice Failure & Sagas** | Distributed Systems | Expert | ⬜ Planned |

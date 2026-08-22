@@ -1,0 +1,26 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  application:
+    name: module-24-timezones-dst-instant-localdatetime-clock-skew
+  jackson:
+    # ------------------------------------------------------------------------
+    # Jackson Timezone Configuration:
+    # Ensures all date/time fields serialize and deserialize strictly in UTC
+    # ------------------------------------------------------------------------
+    time-zone: UTC
+    deserialization:
+      adjust-dates-to-context-time-zone: false
+    serialization:
+      write-dates-as-timestamps: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
