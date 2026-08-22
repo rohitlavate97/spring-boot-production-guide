@@ -1,0 +1,52 @@
+# ==============================================================================
+# ❌ ANTI-PATTERN KUBERNETES DEPLOYMENT: 4 Fatal Production Pitfalls
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finflow-clearing-service-bad
+  namespace: production
+spec:
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: finflow-clearing-service-bad
+    spec:
+      # ❌ Pitfall 1: Default 30s grace period without preStop hook
+      # Ingress keeps sending traffic for 3-5s after SIGTERM, causing 502/Connection Refused errors!
+      terminationGracePeriodSeconds: 30
+
+      containers:
+        - name: clearing-service
+          image: finflow/clearing-service:1.0.0
+
+          # ❌ Pitfall 2: Burstable QoS class (requests << limits)
+          # Under node memory pressure, Linux OOM Killer targets this pod first because oom_score_adj > 800!
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "2048Mi"
+              cpu: "1000m"
+
+          # ❌ Pitfall 3: Missing Startup Probe + Overly Aggressive Liveness Probe
+          # Pod is killed and restarted repeatedly if Spring Boot initialization takes > 15s!
+          # ❌ Pitfall 4: Liveness Probe Pointed at /actuator/health (Full Status)
+          # When downstream DB has transient latency, /actuator/health returns 503 DOWN.
+          # Kubelet kills the pod, causing a CLUSTER-WIDE RESTART DEATH SPIRAL!
+          livenessProbe:
+            httpGet:
+              path: /actuator/health   # ❌ FATAL: Includes database and redis checks!
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 2
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health   # ❌ FATAL: Same un-isolated probe
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5

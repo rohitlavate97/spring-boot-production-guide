@@ -1,0 +1,29 @@
+﻿# ==============================================================================
+# ❌ ANTI-PATTERN DOCKERFILE: 5 Deadly Container Pitfalls
+# ==============================================================================
+
+# ❌ Pitfall 1: Heavy Monolithic Base Image (Over 1.2GB with compilers & package managers)
+FROM ubuntu:22.04
+
+# ❌ Pitfall 2: Running as root (Security vulnerability, violates container compliance)
+USER root
+
+RUN apt-get update && apt-get install -y openjdk-21-jdk maven curl && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# ❌ Pitfall 3: No Layer Caching - copies entire project before building
+COPY . .
+RUN mvn clean package -DskipTests
+
+# ❌ Pitfall 4: Hardcoded -Xmx (e.g. -Xmx2048m) ignoring container cgroup limits!
+# In a 1GB container, this guarantees kernel OOM Killer SIGKILL (Exit Code 137).
+# In a 16GB container, this wastes 14GB of memory.
+ENV JAVA_OPTS="-Xmx2048m -Xms2048m"
+
+EXPOSE 8080
+
+# ❌ Pitfall 5: Shell Form ENTRYPOINT (Spawns /bin/sh as PID 1)
+# /bin/sh does NOT forward SIGTERM to Java, preventing Spring Boot graceful shutdown!
+# Kubernetes waits 30s then forcefully SIGKILLs the container, dropping inflight payments.
+ENTRYPOINT java $JAVA_OPTS -jar target/module-16-docker-containerization-cgroup-traps-1.0.0-SNAPSHOT.jar

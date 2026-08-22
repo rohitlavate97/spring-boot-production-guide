@@ -1,0 +1,27 @@
+﻿server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  application:
+    name: module-16-docker-containerization-cgroup-traps
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+container:
+  diagnostics:
+    simulate-cgroup-limits: true
+    simulated-memory-limit-mb: 1024
+    simulated-cpu-quota-cores: 2.0

@@ -45,12 +45,12 @@ Spring Boot Application
 | **[13](docs/module-13-jvm-threads-async-pool-saturation.md)** | **JVM Threads, Async & Thread Pool Saturation** | Concurrency / JVM | Expert | ✅ Complete |
 | **[14](docs/module-14-jvm-memory-leaks-metaspace-gc-oom.md)** | **JVM Memory Leaks, Metaspace, GC Thrashing & OOM** | JVM Performance | Expert | ✅ Complete |
 | **[15](docs/module-15-logging-observability-mdc-tracing.md)** | **Logging, Observability, MDC & Tracing Gaps** | Observability / SRE | Advanced | ✅ Complete |
-| **16** | **Docker Containerization & Cgroup Traps** | Containers | Intermediate | ⬜ Planned |
-| **17** | **Kubernetes Pod Lifecycle, Probes & OOMKilled** | Orchestration / K8s | Advanced | ⬜ Planned |
-| **18** | **API Gateway, Nginx & Reverse Proxy Timeouts** | Edge / Networking | Advanced | ⬜ Planned |
-| **19** | **Redis Caching: Stampede, Avalanche & Invalidation** | Distributed Cache | Advanced | ⬜ Planned |
-| **20** | **Apache Kafka: Consumer Lag, Poison Pills & Rebalances** | Messaging / Kafka | Expert | ⬜ Planned |
-| **21** | **Concurrency, Race Conditions & Distributed Locks** | Concurrency / Data | Expert | ⬜ Planned |
+| **[16](docs/module-16-docker-containerization-cgroup-traps.md)** | **Docker Containerization & Cgroup Traps** | Containers | Intermediate | ✅ Complete |
+| **[17](docs/module-17-kubernetes-pod-lifecycle-probes-oomkilled.md)** | **Kubernetes Pod Lifecycle, Probes & OOMKilled** | Orchestration / K8s | Advanced | ✅ Complete |
+| **[18](docs/module-18-api-gateway-nginx-reverse-proxy-timeouts.md)** | **API Gateway, Nginx & Reverse Proxy Timeouts** | Edge / Networking | Advanced | ✅ Complete |
+| **[19](docs/module-19-redis-caching-stampede-avalanche-invalidation.md)** | **Redis Caching: Stampede, Avalanche & Invalidation** | Distributed Cache | Advanced | ✅ Complete |
+| **[20](docs/module-20-apache-kafka-consumer-lag-poison-pills-rebalances.md)** | **Apache Kafka: Consumer Lag, Poison Pills & Rebalances** | Messaging / Kafka | Expert | ✅ Complete |
+| **[21](docs/module-21-concurrency-race-conditions-distributed-locks.md)** | **Concurrency, Race Conditions & Distributed Locks** | Concurrency / Data | Expert | ✅ Complete |
 | **22** | **Scheduled Jobs, Job Overlaps & Cluster Duplication** | Scheduling / Async | Intermediate | ⬜ Planned |
 | **23** | **File Uploads, Storage Leaks & Ephemeral Containers** | Web & Storage | Intermediate | ⬜ Planned |
 | **24** | **Timezones, DST, Instant vs LocalDateTime & Clock Skew**| Core Runtime | Intermediate | ⬜ Planned |

@@ -1,0 +1,35 @@
+server:
+  port: 8080
+  shutdown: graceful
+  forward-headers-strategy: framework
+  tomcat:
+    # --------------------------------------------------------------------------
+    # Crucial Keep-Alive Rule:
+    # Tomcat keep-alive timeout (70s) MUST be strictly greater than Nginx
+    # upstream keepalive_timeout (65s) to eliminate the TCP FIN race condition!
+    # --------------------------------------------------------------------------
+    connection-timeout: 70000
+    keep-alive-timeout: 70000
+    max-keep-alive-requests: 1000
+
+spring:
+  application:
+    name: module-18-api-gateway-nginx-reverse-proxy-timeouts
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+
+gateway:
+  proxy:
+    client-connect-timeout-ms: 2000
+    client-read-timeout-ms: 8000
+    gateway-read-timeout-ms: 10000
+    nginx-keepalive-timeout-sec: 65
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always

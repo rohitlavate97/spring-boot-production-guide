@@ -1,0 +1,34 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  application:
+    name: module-17-kubernetes-pod-lifecycle-probes-oomkilled
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+      group:
+        liveness:
+          include: livenessState
+        readiness:
+          include: readinessState,downstreamDependencyHealth
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+finflow:
+  downstream:
+    simulate-db-failure: false

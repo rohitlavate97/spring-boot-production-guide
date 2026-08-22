@@ -1,0 +1,39 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  application:
+    name: module-19-redis-caching-stampede-avalanche-invalidation
+  cache:
+    type: simple
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 2000ms
+      lettuce:
+        pool:
+          max-active: 16
+          max-idle: 8
+          min-idle: 2
+          max-wait: 1000ms
+
+finflow:
+  cache:
+    base-ttl-sec: 300
+    jitter-max-sec: 60
+    null-ttl-sec: 60
+    mutex-lock-lease-ms: 5000
+    mutex-retry-wait-ms: 50
+    mutex-max-retries: 20
+    simulate-in-memory-redis: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always

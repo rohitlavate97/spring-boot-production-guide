@@ -1,0 +1,104 @@
+# ==============================================================================
+# Production-Hardened Kubernetes Deployment for Spring Boot Microservices
+# ==============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finflow-clearing-service
+  namespace: production
+  labels:
+    app.kubernetes.io/name: finflow-clearing-service
+    app.kubernetes.io/part-of: finflow-core-banking
+spec:
+  replicas: 4
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 0   # Zero-downtime rolling deployments
+  selector:
+    matchLabels:
+      app: finflow-clearing-service
+  template:
+    metadata:
+      labels:
+        app: finflow-clearing-service
+    spec:
+      # Allow adequate time for in-flight transactions (30s) + preStop hook (10s) + buffer (20s)
+      terminationGracePeriodSeconds: 60
+
+      containers:
+        - name: clearing-service
+          image: finflow/clearing-service:1.0.0
+          imagePullPolicy: IfNotPresent
+
+          # --------------------------------------------------------------------
+          # QoS: Guaranteed Class (requests == limits) prevents kernel OOM eviction
+          # --------------------------------------------------------------------
+          resources:
+            requests:
+              memory: "1536Mi"
+              cpu: "1000m"
+            limits:
+              memory: "1536Mi"
+              cpu: "1000m"
+
+          ports:
+            - containerPort: 8080
+              name: http
+
+          # --------------------------------------------------------------------
+          # preStop Hook: Holds pod in Terminating state for 10s while Kube-Proxy & Ingress
+          # remove pod IP from routing tables before Spring Boot receives SIGTERM.
+          # --------------------------------------------------------------------
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh", "-c", "sleep 10"]
+
+          # --------------------------------------------------------------------
+          # Startup Probe: Protects slow bootstrap (Flyway/Liquibase/JIT)
+          # Gives pod up to 60s (30 * 2s) to initialize without premature liveness kills.
+          # --------------------------------------------------------------------
+          startupProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 2
+            failureThreshold: 30
+            timeoutSeconds: 2
+
+          # --------------------------------------------------------------------
+          # Liveness Probe: Checks ONLY internal JVM health (LivenessState.CORRECT)
+          # NEVER checks external dependencies (DB/Redis) to prevent restart death spirals!
+          # --------------------------------------------------------------------
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 3
+            timeoutSeconds: 3
+
+          # --------------------------------------------------------------------
+          # Readiness Probe: Checks if application is ready to accept user traffic.
+          # Returns 503 if downstream dependencies or local queues are saturated.
+          # --------------------------------------------------------------------
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            periodSeconds: 5
+            failureThreshold: 2
+            timeoutSeconds: 2
+
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "production"
+            - name: SERVER_SHUTDOWN
+              value: "graceful"
+            - name: SPRING_LIFECYCLE_TIMEOUT_PER_SHUTDOWN_PHASE
+              value: "30s"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:+ExitOnOutOfMemoryError"
