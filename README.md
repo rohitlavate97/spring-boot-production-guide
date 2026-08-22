@@ -1,7 +1,28 @@
-# Spring Boot Production Mastery
+# Spring Boot Production Mastery & Troubleshooting Guide
 
-> **Enterprise Production Engineering Handbook & Reference Codebase**
-> A chapter-by-chapter curriculum teaching Spring Boot 3.x and Java 21 from the perspective of real production incidents: how large-scale systems fail, how to debug them under pressure, and how to engineer resilient architectures.
+> **The Definitive Enterprise Production Engineering & Incident Troubleshooting Repository**
+> Two complete, production-grade curricula teaching Spring Boot 3.x and Java 21:
+> 1. 📘 **[Mastery Handbook](docs/HANDBOOK.md)** — 40-chapter architecture and engineering curriculum.
+> 2. 🚨 **[Troubleshooting & Incident Debugging Master Guide](production issues/README.md)** — 28-module root cause analysis (RCA), diagnostic runbook, and real-world incident debugging curriculum.
+
+---
+
+## 🚨 Curriculum B: Production Troubleshooting & Incident Debugging Guide
+
+The **[Production Troubleshooting Guide](production issues/README.md)** contains **28 comprehensive incident modules**, **28 standalone runnable code labs**, and **7 master operational deliverables**:
+
+- 🗺️ **[Troubleshooting Master Roadmap](production issues/README.md)** — Full 28-module roadmap & difficulty breakdown.
+- 🔬 **[28 Technical Incident Guides](production issues/docs/)** — In-depth 12-section technical post-mortems and diagnostic runbooks.
+- 🧪 **[28 Runnable Code Laboratories](production issues/code/)** — Java 21 / Spring Boot 3.3.5 labs with automated failure reproduction and fix test suites.
+
+### 📚 Master Deliverables & Reference Guides
+- 📝 **[Master Answer Guide](production issues/docs/master-answer-guide.md)** — Solutions & explanations for all 28 modules.
+- 🌳 **[Master Debugging Decision Tree](production issues/docs/debugging-decision-tree.md)** — Algorithmic triage flowchart for high-severity incidents.
+- 🔍 **[Symptom-Cause-Evidence Matrix](production issues/docs/symptom-cause-evidence-matrix.md)** — 28-row cross-module diagnostic lookup matrix.
+- 💻 **[Master Diagnostic Command Cheat Sheet](production issues/docs/command-cheat-sheet.md)** — JVM, Linux, PostgreSQL, Kafka, Redis & K8s commands.
+- 📊 **[Actuator & Observability Checklist](production issues/docs/actuator-observability-checklist.md)** — Metric, trace, and logging production standards.
+- 🛡️ **[Master Production Readiness Checklist](production issues/docs/production-readiness-checklist.md)** — 50-point pre-production verification audit.
+- 🎓 **[Final Comprehensive Assessment & Certification Exam](production issues/docs/final-assessment.md)** — 50-question master certification exam.
 
 ---
 
@@ -25,7 +46,7 @@ Full architectural topology, database schemas, failure domains, and infrastructu
 
 ---
 
-## 📊 Curriculum & Progress Tracker
+## 📘 Curriculum A: Mastery Handbook & Progress Tracker
 
 **Progress:** `40 / 40` Chapters Completed (100% COMPLETE! 🎉)
 
